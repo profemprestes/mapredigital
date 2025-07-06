@@ -1,12 +1,14 @@
 'use client';
 
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
 
 const testimonials = [
     {
       name: "Ana García",
+      title: "CEO",
       company: "Tech Solutions",
       logo: "https://placehold.co/120x40.png",
       dataAiHint: "tech logo",
@@ -14,6 +16,7 @@ const testimonials = [
     },
     {
       name: "Carlos Rodríguez",
+      title: "Project Manager",
       company: "Innova Corp",
       logo: "https://placehold.co/120x40.png",
       dataAiHint: "corporate logo",
@@ -21,6 +24,7 @@ const testimonials = [
     },
     {
       name: "Sofía Martínez",
+      title: "Marketing Director",
       company: "Creative Minds",
       logo: "https://placehold.co/120x40.png",
       dataAiHint: "creative logo",
@@ -50,7 +54,7 @@ const cardVariants = {
       
 export function TestimonialsSection() {
     return (
-        <section id="testimonials" className="py-16 md:py-24 bg-secondary">
+        <section id="testimonials" className="py-16 md:py-24 bg-background">
           <div className="container">
             <motion.div 
               className="mx-auto max-w-2xl text-center"
@@ -65,7 +69,7 @@ export function TestimonialsSection() {
               </p>
             </motion.div>
             <motion.div 
-              className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3"
+              className="mt-16 grid gap-8 md:grid-cols-1 lg:grid-cols-3"
               variants={sectionVariants}
               initial="hidden"
               whileInView="visible"
@@ -76,24 +80,27 @@ export function TestimonialsSection() {
                   key={index}
                   variants={cardVariants}
                 >
-                  <Card className="flex h-full flex-col justify-between overflow-hidden rounded-lg shadow-sm transition-shadow hover:shadow-2xl hover:-translate-y-2 duration-300">
-                    <CardContent className="pt-6">
-                      <p className="italic text-foreground">"{testimonial.quote}"</p>
-                    </CardContent>
-                    <CardHeader className="mt-auto flex-row items-center gap-4 border-t bg-background/50 p-4">
-                       <Image
-                        src={testimonial.logo}
-                        alt={`${testimonial.company} logo`}
-                        width={100}
-                        height={40}
-                        className="object-contain"
-                        data-ai-hint={testimonial.dataAiHint}
-                      />
-                      <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-2 border bg-card">
+                    <CardContent className="p-8 relative">
+                      <Quote className="absolute top-4 right-4 h-12 w-12 text-primary/10" />
+                      <div className="flex items-center gap-4 mb-6">
+                         <Image
+                          src={testimonial.logo}
+                          alt={`${testimonial.company} logo`}
+                          width={100}
+                          height={40}
+                          className="object-contain self-start"
+                          data-ai-hint={testimonial.dataAiHint}
+                        />
+                         <div>
+                          <p className="font-bold text-lg text-foreground">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}, {testimonial.company}</p>
+                        </div>
                       </div>
-                    </CardHeader>
+                      <p className="text-lg text-foreground/90 italic leading-relaxed">
+                        "{testimonial.quote}"
+                      </p>
+                    </CardContent>
                   </Card>
                 </motion.div>
               ))}

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function PlanAssistantSection() {
     return (
-        <section id="plan-assistant" className="py-16 md:py-24 bg-white">
+        <section id="plan-assistant" className="py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-background">
           <div className="container">
             <motion.div 
               className="mx-auto max-w-3xl text-center"

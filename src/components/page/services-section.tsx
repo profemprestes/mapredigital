@@ -6,17 +6,17 @@ import { motion } from 'framer-motion';
 
 const services = [
     {
-      icon: <Target className="h-10 w-10 text-primary" />,
+      icon: <Target className="h-12 w-12 text-primary" />,
       title: "Posicionamiento Web",
       description: "Aumentamos tu visibilidad en buscadores para atraer más clientes potenciales y superar a tu competencia.",
     },
     {
-      icon: <Code className="h-10 w-10 text-primary" />,
+      icon: <Code className="h-12 w-12 text-primary" />,
       title: "Desarrollo de Herramientas Online",
       description: "Creamos soluciones a medida, desde calculadoras interactivas hasta CRMs, para optimizar tus procesos.",
     },
     {
-      icon: <MessageCircle className="h-10 w-10 text-primary" />,
+      icon: <MessageCircle className="h-12 w-12 text-primary" />,
       title: "Consultoría Digital",
       description: "Te guiamos con estrategias efectivas para asegurar que cada paso en el mundo digital sea un éxito.",
     },
@@ -44,7 +44,7 @@ const cardVariants = {
 
 export function ServicesSection() {
     return (
-        <section id="services" className="py-16 md:py-24">
+        <section id="services" className="py-16 md:py-24 bg-secondary">
           <div className="container">
             <motion.div 
               className="mx-auto max-w-2xl text-center"
@@ -59,7 +59,7 @@ export function ServicesSection() {
               </p>
             </motion.div>
             <motion.div 
-              className="mt-12 grid gap-8 md:grid-cols-3"
+              className="mt-16 grid gap-8 md:grid-cols-3"
               variants={sectionVariants}
               initial="hidden"
               whileInView="visible"
@@ -69,15 +69,16 @@ export function ServicesSection() {
                 <motion.div
                   key={index}
                   variants={cardVariants}
+                  className="group"
                 >
-                  <Card className="h-full text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-transparent hover:border-primary bg-card/50">
-                    <CardHeader className="items-center">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Card className="h-full text-center transition-all duration-300 bg-card border-2 border-transparent group-hover:border-primary group-hover:shadow-2xl group-hover:-translate-y-2">
+                    <CardHeader className="items-center pt-8">
+                      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
                         {service.icon}
                       </div>
-                      <CardTitle className="font-headline mt-4">{service.title}</CardTitle>
+                      <CardTitle className="font-headline text-2xl">{service.title}</CardTitle>
                     </CardHeader>
-                    <CardContent className="text-muted-foreground">
+                    <CardContent className="text-muted-foreground px-8 pb-8">
                       {service.description}
                     </CardContent>
                   </Card>
