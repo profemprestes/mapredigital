@@ -5,8 +5,8 @@ import { Header } from '@/components/layout/Header';
 import { Roboto } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
-const SocialsBanner = dynamic(() => import('@/components/shared/SocialsBanner').then(mod => mod.SocialsBanner), { ssr: false });
-const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer), { ssr: false });
+const SocialsBanner = dynamic(() => import('@/components/shared/SocialsBanner').then(mod => mod.SocialsBanner));
+const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer));
 
 const roboto = Roboto({
   subsets: ['latin'],

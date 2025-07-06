@@ -3,8 +3,8 @@ import { PageHero } from '@/components/shared/PageHero';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-const WorkProcessSection = dynamic(() => import('@/components/services/WorkProcessSection').then(mod => mod.WorkProcessSection), { ssr: false });
-const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection), { ssr: false });
+const WorkProcessSection = dynamic(() => import('@/components/services/WorkProcessSection').then(mod => mod.WorkProcessSection));
+const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection));
 
 
 export const metadata: Metadata = {

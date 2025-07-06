@@ -3,8 +3,8 @@ import { ServicesSection } from '@/components/page/services-section';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-const TestimonialsSection = dynamic(() => import('@/components/page/testimonials-section').then(mod => mod.TestimonialsSection), { ssr: false });
-const PlanAssistantSection = dynamic(() => import('@/components/page/plan-assistant-section').then(mod => mod.PlanAssistantSection), { ssr: false });
+const TestimonialsSection = dynamic(() => import('@/components/page/testimonials-section').then(mod => mod.TestimonialsSection));
+const PlanAssistantSection = dynamic(() => import('@/components/page/plan-assistant-section').then(mod => mod.PlanAssistantSection));
 
 
 export const metadata: Metadata = {

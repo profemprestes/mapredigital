@@ -3,9 +3,9 @@ import { PageHero } from '@/components/shared/PageHero';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-const FounderSection = dynamic(() => import('@/components/about/FounderSection').then(mod => mod.FounderSection), { ssr: false });
-const ValuesSection = dynamic(() => import('@/components/about/ValuesSection').then(mod => mod.ValuesSection), { ssr: false });
-const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection), { ssr: false });
+const FounderSection = dynamic(() => import('@/components/about/FounderSection').then(mod => mod.FounderSection));
+const ValuesSection = dynamic(() => import('@/components/about/ValuesSection').then(mod => mod.ValuesSection));
+const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection));
 
 export const metadata: Metadata = {
   title: 'Sobre Nosotros - Nuestra Historia y Misión',
