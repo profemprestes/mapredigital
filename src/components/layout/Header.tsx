@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -30,14 +29,16 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    if (!isMounted) {
+      return;
+    }
+
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 50);
     };
     
-    if (isMounted) {
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Set initial state
-    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMounted]);
@@ -51,7 +52,7 @@ export function Header() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
   };
 
-  const showSolidHeader = isMounted && hasScrolled;
+  const showSolidHeader = hasScrolled;
 
   return (
     <motion.header
