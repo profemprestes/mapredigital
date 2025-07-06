@@ -10,14 +10,12 @@ import { motion } from 'framer-motion';
 export default function ServiciosPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background font-body">
-      <Header />
       <main className="flex-1">
         <HeroSection />
         <DetailedServicesSection />
         <WorkProcessSection />
         <CTASection />
       </main>
-      <Footer />
     </div>
   );
 }

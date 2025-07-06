@@ -9,7 +9,6 @@ import { CTASection } from '@/components/shared/CTASection';
 export default function NosotrosPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background font-body">
-      <Header />
       <main className="flex-1">
         <StoryHeroSection />
         <MissionVisionSection />
@@ -17,7 +16,6 @@ export default function NosotrosPage() {
         <ValuesSection />
         <CTASection />
       </main>
-      <Footer />
     </div>
   );
 }
