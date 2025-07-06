@@ -5,8 +5,8 @@ export function ContactDetails() {
     {
       icon: <Mail className="h-8 w-8 text-primary" />,
       title: "Email",
-      info: "contacto@mapredigital.com",
-      href: "mailto:contacto@mapredigital.com",
+      info: "profematiasprestes@gmail.com",
+      href: "mailto:profematiasprestes@gmail.com",
     },
     {
       icon: <Globe className="h-8 w-8 text-primary" />,

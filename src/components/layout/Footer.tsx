@@ -97,11 +97,11 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 <li className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-secondary" />
-                  <motion.a whileHover={itemHover} href="mailto:contacto@mapredigital.com" className="text-sm hover:text-background transition-colors">contacto@mapredigital.com</motion.a>
+                  <motion.a whileHover={itemHover} href="mailto:profematiasprestes@gmail.com" className="text-sm hover:text-background transition-colors">profematiasprestes@gmail.com</motion.a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-secondary" />
-                  <motion.a whileHover={itemHover} href="tel:+34123456789" className="text-sm hover:text-background transition-colors">+34 123 456 789</motion.a>
+                  <motion.a whileHover={itemHover} href="tel:+59897338241" className="text-sm hover:text-background transition-colors">+598 097 338 241</motion.a>
                 </li>
               </ul>
               <div className="mt-6 flex space-x-2">

@@ -44,11 +44,10 @@ export function FounderSection() {
                <div className="absolute -inset-2 bg-primary/30 rounded-2xl transform -rotate-3" />
                <div className="relative h-full w-full overflow-hidden rounded-xl shadow-2xl">
                     <Image
-                      src="https://placehold.co/600x800.png"
+                      src="/FotoPerfilMatias.webp"
                       alt="Matías Prestes, fundador de Mapre Digital"
                       fill
                       className="object-cover object-top"
-                      data-ai-hint="professional headshot man"
                     />
                </div>
             </div>
