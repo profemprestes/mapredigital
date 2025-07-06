@@ -27,11 +27,11 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/Logo_Mapre.svg"
+            src="/Portada_MAFRE.svg"
             alt="Mapre Digital Logo"
-            width={150}
+            width={40}
             height={40}
-            className="h-auto w-auto"
+            className="h-10 w-auto"
             priority={isHomePage}
             data-ai-hint="company logo white"
           />
@@ -92,7 +92,7 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
                   <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                   <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
                     <Image
-                      src="/Logo_Mapre.svg"
+                      src="/Portada_MAFRE.svg"
                       alt="Mapre Digital Logo"
                       width={140}
                       height={40}
