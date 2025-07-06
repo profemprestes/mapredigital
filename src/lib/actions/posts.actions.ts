@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import prisma from '@/lib/prisma'
 import { slugify } from '@/lib/utils'
+import { enhanceContent } from '@/ai/flows/content-enhancement-flow'
 
 // Create Post
 export async function createPost(formData: FormData) {
@@ -124,4 +125,18 @@ export async function getLatestPosts(limit: number = 3) {
     take: limit,
   });
   return posts;
+}
+
+// Enhance Post with AI
+export async function enhancePostWithAI(title: string, content: string) {
+  if (!title && !content) {
+    throw new Error('El título y el contenido son obligatorios para la mejora con IA.')
+  }
+  try {
+    const result = await enhanceContent({ title: title || '', content: content || '' })
+    return result
+  } catch (error) {
+    console.error('Error enhancing post with AI:', error)
+    throw new Error('No se pudo mejorar el contenido con la IA. Inténtalo de nuevo.')
+  }
 }

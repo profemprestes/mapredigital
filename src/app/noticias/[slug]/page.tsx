@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Calendar, Clock } from 'lucide-react';
+import { CommentSection } from '@/components/noticias/CommentSection';
 
 type Props = {
   params: { slug: string };
@@ -87,6 +88,8 @@ export default async function NoticiaDetallePage({ params }: Props) {
            <div className="prose prose-lg dark:prose-invert max-w-none">
              <ReactMarkdown>{post.content}</ReactMarkdown>
            </div>
+           
+           <CommentSection postId={post.id} />
         </div>
     </article>
   );
