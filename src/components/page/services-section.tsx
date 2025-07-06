@@ -25,7 +25,7 @@ export function ServicesSection() {
           <div className="container">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">Nuestros Servicios</h2>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-foreground">
                 Soluciones diseñadas para potenciar tu éxito en el mundo digital.
               </p>
             </div>

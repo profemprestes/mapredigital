@@ -15,15 +15,20 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="relative">
-      <div className="absolute inset-0 -z-10 opacity-30">
+    // Contenedor principal para el contexto de apilamiento
+    <div className="relative isolate">
+      {/* El fondo se renderiza en una capa inferior y no bloquea el contenido */}
+      <div className="absolute inset-0 z-[-1] h-full w-full opacity-30">
         <ClientParticles />
       </div>
-      
-      <HeroSection />
-      <ServicesSection />
-      <TestimonialsSection />
-      <PlanAssistantSection />
-    </main>
+
+      {/* El contenido principal se renderiza en una capa superior y no es hijo de la animación */}
+      <main className="relative z-10">
+        <HeroSection />
+        <ServicesSection />
+        <TestimonialsSection />
+        <PlanAssistantSection />
+      </main>
+    </div>
   );
 }

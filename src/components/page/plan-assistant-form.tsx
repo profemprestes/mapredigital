@@ -73,7 +73,7 @@ export function PlanAssistantForm() {
             <div className="space-y-2">
               <Label htmlFor="technicalExpertise">Nivel de experiencia técnica</Label>
               <Select name="technicalExpertise" required defaultValue={state.fields?.technicalExpertise}>
-                <SelectTrigger id="technicalExpertise" aria-invalid={!!state.issues?.find(issue => issue.includes('experiencia'))} className="focus:ring-2 focus:ring-primary/50">
+                <SelectTrigger id="technicalExpertise" aria-label="Selecciona tu nivel de experiencia técnica" aria-invalid={!!state.issues?.find(issue => issue.includes('experiencia'))} className="focus:ring-2 focus:ring-primary/50">
                   <SelectValue placeholder="Selecciona tu nivel" />
                 </SelectTrigger>
                 <SelectContent>
