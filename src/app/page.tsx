@@ -1,5 +1,5 @@
 import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/page/footer';
+import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/page/hero-section';
 import { ServicesSection } from '@/components/page/services-section';
 import { TestimonialsSection } from '@/components/page/testimonials-section';
