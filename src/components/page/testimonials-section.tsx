@@ -51,6 +51,7 @@ export function TestimonialsSection() {
                           alt={`${testimonial.company} logo`}
                           width={100}
                           height={40}
+                          loading="lazy"
                           className="object-contain self-start"
                           data-ai-hint={testimonial.dataAiHint}
                         />
