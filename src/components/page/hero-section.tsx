@@ -16,7 +16,7 @@ export function HeroSection() {
                   style={{ animationDelay: '0.2s' }}
                 >
                   Impulsamos tu Negocio al{' '}
-                  <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-accent to-destructive bg-clip-text text-transparent">
                     Siguiente
                   </span>
                   {' '}Nivel Digital
