@@ -23,14 +23,24 @@ export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(pathname);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    if (isMounted) {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Set initial state
+    }
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMounted]);
   
   useEffect(() => {
     setHoveredPath(pathname);
@@ -41,6 +51,8 @@ export function Header() {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
   };
 
+  const showSolidHeader = isMounted && hasScrolled;
+
   return (
     <motion.header
       variants={headerVariants}
@@ -48,7 +60,7 @@ export function Header() {
       animate="visible"
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        hasScrolled ? 'border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md' : 'bg-transparent'
+        showSolidHeader ? 'border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md' : 'bg-transparent'
       )}
     >
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
@@ -60,7 +72,7 @@ export function Header() {
             height={40}
             className={cn(
               "h-auto transition-filter duration-300", 
-              hasScrolled ? 'brightness-[0.1] dark:brightness-100' : 'brightness-0 invert'
+              showSolidHeader ? 'brightness-[0.1] dark:brightness-100' : 'brightness-0 invert'
             )}
             data-ai-hint="company logo"
             priority
@@ -76,7 +88,7 @@ export function Header() {
               className={cn(
                 "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
                 pathname === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary',
-                hasScrolled ? '' : 'text-primary-foreground/80 hover:text-primary-foreground'
+                !showSolidHeader && 'text-primary-foreground/80 hover:text-primary-foreground'
               )}
             >
               {link.label}
@@ -111,9 +123,9 @@ export function Header() {
                       transition={{ duration: 0.2 }}
                     >
                       {isSheetOpen ? (
-                        <X className={cn("h-6 w-6", !hasScrolled && "text-primary-foreground")} />
+                        <X className={cn("h-6 w-6", !showSolidHeader && "text-primary-foreground")} />
                       ) : (
-                        <Menu className={cn("h-6 w-6", !hasScrolled && "text-primary-foreground")} />
+                        <Menu className={cn("h-6 w-6", !showSolidHeader && "text-primary-foreground")} />
                       )}
                     </motion.div>
                   </AnimatePresence>
