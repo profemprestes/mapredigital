@@ -85,4 +85,48 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .prose {
+    @apply text-foreground;
+  }
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-headline font-bold text-foreground mt-8 mb-4;
+  }
+  .prose h1 { @apply text-4xl; }
+  .prose h2 { @apply text-3xl; }
+  .prose h3 { @apply text-2xl; }
+  .prose p {
+    @apply leading-relaxed mb-6;
+  }
+  .prose a {
+    @apply text-primary underline hover:text-primary/80;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2;
+  }
+  .prose ol {
+    @apply list-decimal list-inside mb-6 space-y-2;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-primary bg-secondary/50 p-4 my-6 italic;
+  }
+  .prose code {
+    @apply bg-muted text-muted-foreground rounded-md px-2 py-1 text-sm;
+  }
+  .prose pre {
+    @apply bg-muted text-muted-foreground rounded-md p-4 overflow-x-auto;
+  }
+
+  .dark .prose {
+    @apply text-background;
+  }
+  .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+    @apply text-background;
+  }
+  .dark .prose a {
+    @apply text-primary hover:text-primary/80;
+  }
+  .dark .prose blockquote {
+    @apply border-primary bg-secondary/10;
+  }
 }

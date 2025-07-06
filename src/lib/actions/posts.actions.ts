@@ -74,7 +74,7 @@ export async function deletePost(id: string) {
   revalidatePath('/noticias')
 }
 
-// Get All Posts (for admin dashboard)
+// Get All Posts (for admin dashboard and sitemap)
 export async function getAllPosts() {
   const posts = await prisma.post.findMany({
     orderBy: {
@@ -82,6 +82,25 @@ export async function getAllPosts() {
     },
   })
   return posts
+}
+
+// Get All Published Posts (for public blog)
+export async function getPublishedPosts() {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  })
+  return posts
+}
+
+// Get Post By Slug (for post detail page)
+export async function getPostBySlug(slug: string) {
+  const post = await prisma.post.findUnique({
+    where: { slug, published: true },
+  })
+  return post
 }
 
 // Get Post By ID (for edit form)
