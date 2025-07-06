@@ -1,21 +1,11 @@
 
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef } from 'react';
 import { Loader2 } from 'lucide-react';
-import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -26,139 +16,95 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { createContactMessage, type ContactFormState } from '@/lib/actions/contact.actions';
+import { Label } from '@/components/ui/label';
 
-const contactFormSchema = z.object({
-  name: z.string().min(2, {
-    message: 'El nombre debe tener al menos 2 caracteres.',
-  }),
-  email: z.string().email({
-    message: 'Por favor, introduce un email válido.',
-  }),
-  service: z.enum(
-    ["SEO Estratégico", "Herramientas a Medida", "Consultoría Digital", "Otro"],
-    {
-      errorMap: () => ({ message: "Por favor, selecciona un servicio." }),
-    }
-  ),
-  message: z.string().min(10, {
-    message: 'El mensaje debe tener al menos 10 caracteres.',
-  }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-
-const defaultValues: Partial<ContactFormValues> = {
-  name: '',
-  email: '',
+const initialState: ContactFormState = {
   message: '',
+  success: false,
 };
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending} className="w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105" size="lg">
+      {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
+      {pending ? 'Enviando...' : 'Enviar Mensaje'}
+    </Button>
+  );
+}
+
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [state, formAction] = useFormState(createContactMessage, initialState);
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues,
-  });
-
-  async function onSubmit(data: ContactFormValues) {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
-    setIsSubmitting(false);
-    
-    toast({
-      title: '¡Mensaje Enviado!',
-      description: 'Gracias por contactarnos. Te responderemos a la brevedad.',
-    });
-    form.reset();
-  }
+  useEffect(() => {
+    if (state.message) {
+      if (state.success) {
+        toast({
+          title: '¡Éxito!',
+          description: state.message,
+        });
+        formRef.current?.reset();
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Error de validación',
+          description: state.message,
+        });
+      }
+    }
+  }, [state, toast]);
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <h2 className="font-headline text-2xl font-bold text-foreground">
-          Envíanos un Mensaje
-        </h2>
-        
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nombre Completo</FormLabel>
-              <FormControl>
-                <Input placeholder="Tu nombre" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <form ref={formRef} action={formAction} className="space-y-6">
+      <h2 className="font-headline text-2xl font-bold text-foreground">
+        Envíanos un Mensaje
+      </h2>
+      
+      <div className="space-y-2">
+        <Label htmlFor="name">Nombre Completo</Label>
+        <Input id="name" name="name" placeholder="Tu nombre" required />
+        {state.errors?.name && <p className="text-sm font-medium text-destructive">{state.errors.name[0]}</p>}
+      </div>
 
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="tu@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="service"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Servicio de Interés</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un servicio" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="SEO Estratégico">SEO Estratégico</SelectItem>
-                  <SelectItem value="Herramientas a Medida">Herramientas a Medida</SelectItem>
-                  <SelectItem value="Consultoría Digital">Consultoría Digital</SelectItem>
-                  <SelectItem value="Otro">Otro</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" name="email" type="email" placeholder="tu@email.com" required />
+        {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email[0]}</p>}
+      </div>
+      
+      <div className="space-y-2">
+        <Label htmlFor="service">Servicio de Interés</Label>
+        <Select name="service" required>
+          <SelectTrigger id="service">
+            <SelectValue placeholder="Selecciona un servicio" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="SEO Estratégico">SEO Estratégico</SelectItem>
+            <SelectItem value="Herramientas a Medida">Herramientas a Medida</SelectItem>
+            <SelectItem value="Consultoría Digital">Consultoría Digital</SelectItem>
+            <SelectItem value="Otro">Otro</SelectItem>
+          </SelectContent>
+        </Select>
+        {state.errors?.service && <p className="text-sm font-medium text-destructive">{state.errors.service[0]}</p>}
+      </div>
 
-        <FormField
-          control={form.control}
+      <div className="space-y-2">
+        <Label htmlFor="message">Tu Mensaje</Label>
+        <Textarea
+          id="message"
           name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tu Mensaje</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Cuéntanos cómo podemos ayudarte..."
-                  className="resize-none"
-                  rows={5}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Cuéntanos cómo podemos ayudarte..."
+          className="resize-none"
+          rows={5}
+          required
         />
-        
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105" size="lg">
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
-          Enviar Mensaje
-        </Button>
-      </form>
-    </Form>
+        {state.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message[0]}</p>}
+      </div>
+      
+      <SubmitButton />
+    </form>
   );
 }

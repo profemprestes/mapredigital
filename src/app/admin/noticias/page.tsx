@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PlusCircle } from 'lucide-react'
+import { Mail, PlusCircle } from 'lucide-react'
 import { getAllPosts } from '@/lib/actions/posts.actions'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,17 +19,32 @@ export const dynamic = 'force-dynamic'
 
 export default async function AdminNoticiasPage() {
   const posts = await getAllPosts()
+  // In a real app, you would fetch this from the DB
+  const unreadMessages = 0; 
 
   return (
     <div className="p-4 md:p-8">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold">Administración de Noticias</h1>
-        <Button asChild>
-          <Link href="/admin/noticias/crear">
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Crear Nueva Noticia
-          </Link>
-        </Button>
+        <div className="flex items-center gap-4">
+           <Button asChild variant="outline" className="relative">
+              <Link href="/admin/mensajes">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Ver Mensajes
+                  {unreadMessages > 0 && (
+                      <Badge variant="destructive" className="absolute -top-2 -right-2 px-2 py-0.5 text-xs">
+                          {unreadMessages}
+                      </Badge>
+                  )}
+              </Link>
+           </Button>
+          <Button asChild>
+            <Link href="/admin/noticias/crear">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Crear Nueva Noticia
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <div className="rounded-lg border bg-card">
