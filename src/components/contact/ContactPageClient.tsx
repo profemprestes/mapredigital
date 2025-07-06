@@ -4,6 +4,7 @@ import { ContactForm } from '@/components/contact/ContactForm';
 import { ContactDetails } from '@/components/contact/ContactDetails';
 import { motion } from 'framer-motion';
 import { PageHero } from '@/components/shared/PageHero';
+import { Mail } from 'lucide-react';
 
 export function ContactPageClient() {
   return (
@@ -14,9 +15,10 @@ export function ContactPageClient() {
       transition={{ duration: 0.5 }}
     >
       <PageHero 
-        title="Hablemos de tu Proyecto"
-        subtitle="Estamos listos para escucharte. Completa el formulario y nos pondremos en contacto."
-        className="flex items-center min-h-[40vh] py-16 md:py-20"
+        title="¿Listo para Empezar?"
+        subtitle="Ponte en contacto con nosotros. Estamos aquí para responder tus preguntas y dar el primer paso juntos."
+        icon={Mail}
+        className="min-h-[40vh] py-16 md:py-20"
       />
       <div className="bg-background">
         <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">

@@ -2,6 +2,7 @@ import { DetailedServicesSection } from '@/components/services/DetailedServicesS
 import { PageHero } from '@/components/shared/PageHero';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import { Puzzle } from 'lucide-react';
 
 const WorkProcessSection = dynamic(() => import('@/components/services/WorkProcessSection').then(mod => mod.WorkProcessSection));
 const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection));
@@ -22,8 +23,9 @@ export default function ServiciosPage() {
     <div className="flex min-h-screen flex-col bg-background font-body">
       <main className="flex-1">
         <PageHero 
-            title="Servicios Diseñados para tu Crecimiento Digital"
-            subtitle="Desde el posicionamiento en buscadores hasta el desarrollo de herramientas a medida, te ofrecemos soluciones que generan un impacto real."
+            title="Soluciones a Medida para tu Éxito"
+            subtitle="Explora nuestros servicios de SEO, desarrollo y consultoría, diseñados para transformar tu presencia digital y generar resultados tangibles."
+            icon={Puzzle}
         />
         <DetailedServicesSection />
         <WorkProcessSection />
