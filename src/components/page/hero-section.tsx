@@ -101,7 +101,6 @@ export function HeroSection() {
                   height={400}
                   className="object-contain drop-shadow-2xl"
                   data-ai-hint="company logo"
-                  priority
                 />
               </motion.div>
             </motion.div>
