@@ -22,28 +22,12 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(pathname);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (!isMounted) {
-      return;
-    }
-
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 50);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMounted]);
   
   useEffect(() => {
     if (!isMounted) return;
@@ -56,20 +40,16 @@ export function Header() {
   };
 
   if (!isMounted) {
-    return <header className="sticky top-0 z-50 w-full bg-transparent h-20" />;
+    // Render a placeholder with the final background color to avoid layout shift and hydration errors
+    return <header className="sticky top-0 z-50 w-full bg-foreground h-20" />;
   }
-  
-  const showSolidHeader = hasScrolled;
 
   return (
     <motion.header
       variants={headerVariants}
       initial="hidden"
       animate="visible"
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        showSolidHeader ? 'border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md' : 'bg-transparent'
-      )}
+      className="sticky top-0 z-50 w-full bg-foreground text-background shadow-lg"
     >
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center">
@@ -78,11 +58,8 @@ export function Header() {
             alt="Mapre Digital Logo"
             width={140}
             height={40}
-            className={cn(
-              "h-auto transition-filter duration-300", 
-              showSolidHeader ? 'brightness-[0.1] dark:brightness-100' : 'brightness-0 invert'
-            )}
-            data-ai-hint="company logo"
+            className="h-auto brightness-0 invert transition-filter duration-300"
+            data-ai-hint="company logo white"
             priority
           />
         </Link>
@@ -94,16 +71,15 @@ export function Header() {
               href={link.href}
               onMouseOver={() => setHoveredPath(link.href)}
               className={cn(
-                "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                pathname === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary',
-                !showSolidHeader && 'text-primary-foreground/80 hover:text-primary-foreground'
+                "relative rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
+                pathname === link.href && 'text-background'
               )}
             >
               {link.label}
               {hoveredPath === link.href && (
                 <motion.div
                   layoutId="header-underline"
-                  className="absolute bottom-0 left-0 h-0.5 w-full bg-primary"
+                  className="absolute bottom-0 left-0 h-0.5 w-full bg-accent"
                   transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                 />
               )}
@@ -115,7 +91,7 @@ export function Header() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button asChild variant="ghost" size="icon" className={cn("hidden md:inline-flex rounded-full hover:bg-green-500/10", showSolidHeader ? "text-green-600 hover:text-green-700" : "text-green-400 hover:text-green-300")}>
+                <Button asChild variant="ghost" size="icon" className="hidden rounded-full text-green-400 hover:bg-primary/50 hover:text-green-300 md:inline-flex">
                   <a href="https://wa.me/59897338241" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
                     <FaWhatsapp className="h-6 w-6" />
                   </a>
@@ -136,7 +112,7 @@ export function Header() {
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Abrir menú">
+                <Button variant="ghost" size="icon" aria-label="Abrir menú" className="text-background hover:bg-primary/50">
                   <AnimatePresence initial={false} mode="wait">
                     <motion.div
                       key={isSheetOpen ? 'x' : 'menu'}
@@ -145,11 +121,7 @@ export function Header() {
                       exit={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {isSheetOpen ? (
-                        <X className={cn("h-6 w-6", !showSolidHeader && "text-primary-foreground")} />
-                      ) : (
-                        <Menu className={cn("h-6 w-6", !showSolidHeader && "text-primary-foreground")} />
-                      )}
+                      {isSheetOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </motion.div>
                   </AnimatePresence>
                 </Button>
