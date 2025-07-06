@@ -32,7 +32,7 @@ export function Footer() {
               <li><Link href="/" className="text-sm hover:text-white transition-colors">Inicio</Link></li>
               <li><Link href="#services" className="text-sm hover:text-white transition-colors">Servicios</Link></li>
               <li><Link href="#testimonials" className="text-sm hover:text-white transition-colors">Nosotros</Link></li>
-              <li><Link href="#plan-assistant" className="text-sm hover:text-white transition-colors">Contacto</Link></li>
+              <li><Link href="/contacto" className="text-sm hover:text-white transition-colors">Contacto</Link></li>
             </ul>
           </div>
 

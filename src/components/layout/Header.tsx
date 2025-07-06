@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -11,7 +12,7 @@ const navLinks = [
   { href: '/', label: 'Inicio' },
   { href: '#services', label: 'Servicios' },
   { href: '#testimonials', label: 'Nosotros' },
-  { href: '#plan-assistant', label: 'Contacto' },
+  { href: '/contacto', label: 'Contacto' },
 ];
 
 export function Header() {
@@ -53,7 +54,7 @@ export function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:block">
               <Button asChild>
-                <Link href="#plan-assistant">Solicitar Asesoría</Link>
+                <Link href="/contacto">Solicitar Asesoría</Link>
               </Button>
             </div>
 
@@ -97,7 +98,7 @@ export function Header() {
                     </ul>
                     <div className="mt-auto pb-8">
                        <Button asChild size="lg" className="w-full">
-                        <Link href="#plan-assistant" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
+                        <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
                       </Button>
                     </div>
                   </div>
