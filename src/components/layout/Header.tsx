@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -66,7 +67,7 @@ export function Header() {
                   pathname === link.href && 'text-background'
                 )}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5" aria-hidden="true" />
                 <span>{link.label}</span>
                 {hoveredPath === link.href && (
                   <motion.div
@@ -86,7 +87,7 @@ export function Header() {
               <TooltipTrigger asChild>
                 <Button asChild variant="ghost" size="icon" className="hidden rounded-full text-green-400 hover:bg-primary/50 hover:text-green-300 md:inline-flex">
                   <a href="https://wa.me/59897338241" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
-                    <FaWhatsapp className="h-6 w-6" />
+                    <FaWhatsapp className="h-6 w-6" aria-hidden="true" />
                   </a>
                 </Button>
               </TooltipTrigger>
@@ -114,16 +115,25 @@ export function Header() {
                       exit={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {isSheetOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                      {isSheetOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
                     </motion.div>
                   </AnimatePresence>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card">
-                <SheetHeader>
-                  <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
+                <SheetHeader className="p-4 border-b">
+                  <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
+                    <Image
+                      src="/Portada_MAFRE.svg"
+                      alt="Mapre Digital Logo"
+                      width={140}
+                      height={40}
+                      className="h-auto"
+                      data-ai-hint="company logo"
+                    />
+                  </Link>
                 </SheetHeader>
-                <div className="mt-8 flex h-full flex-col">
+                <div className="flex-1 flex flex-col p-4 overflow-y-auto">
                   <ul className="flex flex-col items-start space-y-2 text-lg">
                     {navLinks.map((link) => {
                       const Icon = link.icon;
@@ -137,14 +147,20 @@ export function Header() {
                               pathname === link.href ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted'
                             )}
                           >
-                            <Icon className="h-5 w-5" />
+                            <Icon className="h-5 w-5" aria-hidden="true" />
                             <span>{link.label}</span>
                           </Link>
                         </li>
                       );
                     })}
                   </ul>
-                  <div className="mt-auto pb-8">
+                  <div className="mt-auto space-y-4 pt-6">
+                    <Button asChild variant="outline" className="w-full border-green-500 text-green-500 hover:bg-green-50 hover:text-green-600">
+                        <a href="https://wa.me/59897338241" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                            <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+                            <span>Chatea por WhatsApp</span>
+                        </a>
+                    </Button>
                     <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                       <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
                     </Button>
