@@ -20,6 +20,7 @@ const ptSans = PT_Sans({
 
 const siteConfig = {
   name: "Mapre Digital",
+  slogan: "Impulsamos tu Negocio al Siguiente Nivel Digital",
   url: "https://mapredigital.netlify.app/", // Asegúrate de que este sea tu dominio real
   ogImage: "https://mapredigital.netlify.app/Logo_Mapre.webp", // Reemplaza con tu imagen OG definitiva
   description: "Transformamos tu presencia online con estrategias a medida, desde posicionamiento web hasta el desarrollo de herramientas que optimizan tu crecimiento.",
@@ -30,7 +31,7 @@ const siteConfig = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} - ${siteConfig.slogan}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

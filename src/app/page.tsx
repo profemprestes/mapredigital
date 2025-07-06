@@ -13,7 +13,6 @@ const ClientParticles = dynamic(() =>
 );
 
 export const metadata: Metadata = {
-  title: 'Impulsamos tu Negocio al Siguiente Nivel Digital',
   description: 'Transformamos tu presencia online con estrategias a medida, desde posicionamiento web hasta el desarrollo de herramientas que optimizan tu crecimiento.',
   keywords: ['estrategia digital', 'posicionamiento web', 'desarrollo de herramientas', 'consultoría digital', 'mapre digital', 'uruguay'],
 };
