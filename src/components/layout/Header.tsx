@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -20,46 +19,41 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container relative flex h-20 max-w-screen-2xl items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center" onClick={() => isSheetOpen && setIsSheetOpen(false)}>
-          <Image
-            src="/Portada_MAFRE.svg"
-            alt="Mapre Digital Logo"
-            width={140}
-            height={40}
-            className="h-auto"
-            data-ai-hint="company logo"
-            priority
-          />
-        </Link>
-        
-        {/* Desktop Navigation (Centrado absoluto) */}
-        <nav className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <ul className="flex items-center space-x-6">
+      <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
+        {/* Left Side: Logo and Desktop Navigation */}
+        <div className="flex items-center gap-6 md:gap-10">
+          <Link href="/" className="flex items-center" onClick={() => isSheetOpen && setIsSheetOpen(false)}>
+            <Image
+              src="/Portada_MAFRE.svg"
+              alt="Mapre Digital Logo"
+              width={140}
+              height={40}
+              className="h-auto"
+              data-ai-hint="company logo"
+              priority
+            />
+          </Link>
+          <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
             ))}
-          </ul>
-        </nav>
+          </nav>
+        </div>
 
+        {/* Right Side: CTA and Mobile Menu */}
         <div className="flex items-center gap-4">
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
-              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <Link href="/contacto">Solicitar Asesoría</Link>
-              </Button>
-            </div>
+            <Button asChild className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90">
+              <Link href="/contacto">Solicitar Asesoría</Link>
+            </Button>
 
             {/* Mobile Navigation */}
-            <div className="lg:hidden">
+            <div className="md:hidden">
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="icon">
@@ -106,7 +100,6 @@ export function Header() {
               </Sheet>
             </div>
         </div>
-
       </div>
     </header>
   );
