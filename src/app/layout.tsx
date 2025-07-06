@@ -28,10 +28,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://wa.me" />
       </head>
-      <body className={`${roboto.variable} font-body antialiased flex flex-col min-h-screen bg-background`} suppressHydrationWarning={true}>
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <body className={`${roboto.variable} font-body antialiased bg-background`} suppressHydrationWarning={true}>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

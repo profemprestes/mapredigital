@@ -3,7 +3,6 @@ import { ServicesSection } from '@/components/page/services-section';
 import { TestimonialsSection } from '@/components/page/testimonials-section';
 import { PlanAssistantSection } from '@/components/page/plan-assistant-section';
 import { ParticlesBackground } from '@/components/page/particles-background';
-
 export default function Home() {
   return (
     <main className="relative isolate">
@@ -15,5 +14,6 @@ export default function Home() {
       <TestimonialsSection />
       <PlanAssistantSection />
     </main>
+    
   );
 }
