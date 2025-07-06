@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Home, Briefcase, Users, Mail, Menu, X } from 'lucide-react';
@@ -22,62 +21,39 @@ const navLinks = [
 export function Header({ isHomePage }: { isHomePage: boolean }) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [hoveredPath, setHoveredPath] = useState(pathname);
-
-  React.useEffect(() => {
-    setHoveredPath(pathname);
-  }, [pathname]);
-
-  const headerVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
 
   return (
-    <motion.header
-      variants={headerVariants}
-      initial="hidden"
-      animate="visible"
-      className="sticky top-0 z-50 w-full bg-foreground text-background shadow-lg"
-    >
+    <header className="sticky top-0 z-50 w-full bg-foreground text-background shadow-lg">
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/Portada_MAFRE.svg"
+            src="/Logo_Mapre.svg"
             alt="Mapre Digital Logo"
-            width={100}
-            height={35}
-            className="h-auto flex-shrink-0 transition-filter duration-300"
-            data-ai-hint="company logo"
+            width={150}
+            height={40}
+            className="h-auto w-auto"
             priority={isHomePage}
+            data-ai-hint="company logo white"
           />
-          <div className="md:hidden">
-            <p className="font-headline text-sm font-bold text-background leading-tight">Mapre Digital</p>
-            <p className="text-[10px] text-background/80 leading-tight">Impulsamos tu Negocio al Siguiente Nivel</p>
-          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-2" onMouseLeave={() => setHoveredPath(pathname)}>
+        <nav className="hidden md:flex items-center space-x-2">
           {navLinks.map((link) => {
             const Icon = link.icon;
+            const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                onMouseOver={() => setHoveredPath(link.href)}
                 className={cn(
                   "relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
-                  pathname === link.href && 'text-background'
+                  isActive && 'text-background'
                 )}
               >
                 <Icon className="h-5 w-5" aria-hidden="true" />
                 <span>{link.label}</span>
-                {hoveredPath === link.href && (
-                  <motion.div
-                    layoutId="header-underline"
-                    className="absolute bottom-0 left-0 h-0.5 w-full bg-accent"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-accent"></span>
                 )}
               </Link>
             );
@@ -100,27 +76,15 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
             </Tooltip>
           </TooltipProvider>
 
-          <motion.div whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}>
-            <Button asChild className="hidden md:flex bg-foreground text-background hover:bg-foreground/90 shadow-lg">
-              <Link href="/contacto">Solicitar Asesoría</Link>
-            </Button>
-          </motion.div>
+          <Button asChild className="hidden md:flex bg-foreground text-background hover:bg-foreground/90 shadow-lg border border-background/20">
+            <Link href="/contacto">Solicitar Asesoría</Link>
+          </Button>
 
           <div className="md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Abrir menú" className="text-background hover:bg-primary/50">
-                  <AnimatePresence initial={false} mode="wait">
-                    <motion.div
-                      key={isSheetOpen ? 'x' : 'menu'}
-                      initial={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {isSheetOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
-                    </motion.div>
-                  </AnimatePresence>
+                  {isSheetOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
@@ -128,11 +92,11 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
                   <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                   <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
                     <Image
-                      src="/Portada_MAFRE.svg"
+                      src="/Logo_Mapre.svg"
                       alt="Mapre Digital Logo"
                       width={140}
                       height={40}
-                      className="h-auto"
+                      className="h-auto w-auto"
                       data-ai-hint="company logo"
                     />
                   </Link>
@@ -175,6 +139,6 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

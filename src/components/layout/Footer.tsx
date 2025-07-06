@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
   Mail,
   Phone,
@@ -26,7 +25,6 @@ export function Footer() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show button when page is scrolled down
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
@@ -35,7 +33,6 @@ export function Footer() {
     };
 
     window.addEventListener('scroll', toggleVisibility);
-
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
@@ -46,28 +43,11 @@ export function Footer() {
     });
   };
 
-  const footerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-  };
-
-  const itemHover = {
-    y: -2,
-    transition: { type: 'spring', stiffness: 300 }
-  };
-
   return (
     <>
-      <motion.footer 
-        className="bg-foreground text-background/80 relative"
-        variants={footerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
+      <footer className="bg-foreground text-background/80 relative">
         <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Column 1: Logo & Description */}
             <div className="space-y-4">
               <Link href="/" className="inline-block">
                 <Image
@@ -75,7 +55,7 @@ export function Footer() {
                   alt="Mapre Digital Logo"
                   width={150}
                   height={40}
-                  className="h-auto object-contain brightness-0 invert"
+                  className="h-auto w-auto object-contain brightness-0 invert"
                   data-ai-hint="company logo white"
                 />
               </Link>
@@ -84,105 +64,82 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Column 2: Quick Links */}
             <div>
               <h3 className="text-lg font-semibold text-background">Navegación</h3>
               <ul className="mt-4 space-y-3">
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Home className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Inicio</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <Home className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Inicio</span>
+                  </Link>
                 </li>
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/servicios" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <LayoutGrid className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Servicios</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/servicios" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <LayoutGrid className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Servicios</span>
+                  </Link>
                 </li>
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/nosotros" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Users className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Nosotros</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/nosotros" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <Users className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Nosotros</span>
+                  </Link>
                 </li>
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/contacto" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <MessageSquare className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Contacto</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/contacto" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <MessageSquare className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Contacto</span>
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Services */}
             <div>
               <h3 className="text-lg font-semibold text-background">Nuestros Servicios</h3>
               <ul className="mt-4 space-y-3">
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/servicios#seo" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Target className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Posicionamiento Web (SEO)</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/servicios#seo" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <Target className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Posicionamiento Web (SEO)</span>
+                  </Link>
                 </li>
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/servicios#tools" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Wrench className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Herramientas a Medida</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/servicios#tools" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <Wrench className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Herramientas a Medida</span>
+                  </Link>
                 </li>
                 <li>
-                  <motion.div whileHover={itemHover}>
-                    <Link href="/servicios#consulting" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Lightbulb className="h-4 w-4 text-muted" aria-hidden="true" />
-                      <span>Consultoría Digital</span>
-                    </Link>
-                  </motion.div>
+                  <Link href="/servicios#consulting" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                    <Lightbulb className="h-4 w-4 text-muted" aria-hidden="true" />
+                    <span>Consultoría Digital</span>
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Contact & Socials */}
             <div>
               <h3 className="text-lg font-semibold text-background">Contacto</h3>
               <ul className="mt-4 space-y-3">
                 <li className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-muted" aria-hidden="true" />
-                  <motion.a whileHover={itemHover} href="mailto:profematiasprestes@gmail.com" className="text-sm hover:text-background transition-colors">profematiasprestes@gmail.com</motion.a>
+                  <a href="mailto:profematiasprestes@gmail.com" className="text-sm hover:text-background transition-colors">profematiasprestes@gmail.com</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-muted" aria-hidden="true" />
-                  <motion.a whileHover={itemHover} href="tel:+59897338241" className="text-sm hover:text-background transition-colors">+598 097 338 241</motion.a>
+                  <a href="tel:+59897338241" className="text-sm hover:text-background transition-colors">+598 097 338 241</a>
                 </li>
               </ul>
               <div className="mt-6 flex space-x-2">
-                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Link href="https://www.facebook.com/MAPREUY" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Facebook className="h-5 w-5" aria-hidden="true" />
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Link href="https://www.instagram.com/mapreuy/" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Instagram className="h-5 w-5" aria-hidden="true" />
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Link href="#" aria-label="Twitter" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Twitter className="h-5 w-5" aria-hidden="true" />
-                  </Link>
-                </motion.div>
+                <Link href="https://www.facebook.com/MAPREUY" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                  <Facebook className="h-5 w-5" aria-hidden="true" />
+                </Link>
+                <Link href="https://www.instagram.com/mapreuy/" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                  <Instagram className="h-5 w-5" aria-hidden="true" />
+                </Link>
+                <Link href="#" aria-label="Twitter" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                  <Twitter className="h-5 w-5" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>
@@ -193,14 +150,10 @@ export function Footer() {
             </p>
           </div>
         </div>
-      </motion.footer>
+      </footer>
 
-      <div className="fixed bottom-6 right-6 z-50">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-          >
+      {isVisible && (
+          <div className="fixed bottom-6 right-6 z-50">
             <Button
               onClick={scrollToTop}
               size="icon"
@@ -209,8 +162,8 @@ export function Footer() {
             >
               <ArrowUp className="h-6 w-6" aria-hidden="true" />
             </Button>
-          </motion.div>
-      </div>
+          </div>
+      )}
     </>
   );
 }

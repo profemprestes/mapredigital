@@ -6,7 +6,7 @@ import MainLayout from '@/components/layout/MainLayout';
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['500', '700', '800', '900'],
+  weight: ['700', '900'],
   display: 'swap',
   variable: '--font-poppins',
 });
@@ -23,7 +23,8 @@ const siteConfig = {
   url: "https://mapredigital.netlify.app/", // Asegúrate de que este sea tu dominio real
   ogImage: "https://mapredigital.netlify.app/Logo_Mapre.webp", // Reemplaza con tu imagen OG definitiva
   description: "Transformamos tu presencia online con estrategias a medida, desde posicionamiento web hasta el desarrollo de herramientas que optimizan tu crecimiento.",
-  author: "Mapre Digital"
+  author: "Mapre Digital",
+  keywords: "estrategia digital, posicionamiento web, desarrollo de herramientas, consultoría digital, mapre digital, uruguay"
 };
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.author, url: siteConfig.url }],
   creator: siteConfig.author,
   
