@@ -37,8 +37,8 @@ export function MissionVisionSection() {
             <p className="mt-4 text-lg text-muted-foreground">Los dos pilares que guían nuestro propósito y dirección.</p>
         </div>
         
-        <div className="flex flex-col items-center gap-12 text-center md:flex-row md:items-start md:gap-8">
-          <motion.div className="flex flex-col items-center md:w-1/2" variants={itemVariants}>
+        <div className="flex flex-col items-center gap-12 text-center md:flex-row md:items-start md:text-left md:gap-8">
+          <motion.div className="flex flex-col items-center md:items-start md:w-1/2" variants={itemVariants}>
             <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
               <Rocket className="h-8 w-8 text-primary" aria-hidden="true" />
             </div>
@@ -50,7 +50,7 @@ export function MissionVisionSection() {
 
           <Separator orientation="vertical" className="hidden h-auto self-stretch md:block" />
 
-          <motion.div className="flex flex-col items-center md:w-1/2" variants={itemVariants}>
+          <motion.div className="flex flex-col items-center md:items-start md:w-1/2" variants={itemVariants}>
              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
               <Eye className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
