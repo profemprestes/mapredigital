@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
  
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mapredigital.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mapredigital.netlify.app/';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ['', '/servicios', '/nosotros', '/contacto'].map((route) => ({
