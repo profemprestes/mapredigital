@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Home, Briefcase, Users, Mail, Menu, X } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -44,14 +46,19 @@ export function Header() {
   }, [isMounted]);
   
   useEffect(() => {
+    if (!isMounted) return;
     setHoveredPath(pathname);
-  }, [pathname]);
+  }, [pathname, isMounted]);
 
   const headerVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
   };
 
+  if (!isMounted) {
+    return <header className="sticky top-0 z-50 w-full bg-transparent h-20" />;
+  }
+  
   const showSolidHeader = hasScrolled;
 
   return (
@@ -104,7 +111,22 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button asChild variant="ghost" size="icon" className={cn("hidden md:inline-flex rounded-full hover:bg-green-500/10", showSolidHeader ? "text-green-600 hover:text-green-700" : "text-green-400 hover:text-green-300")}>
+                  <a href="https://wa.me/59897338241" target="_blank" rel="noopener noreferrer" aria-label="Chatea con nosotros por WhatsApp">
+                    <FaWhatsapp className="h-6 w-6" />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Chatea con nosotros por WhatsApp</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
           <motion.div whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}>
             <Button asChild className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
               <Link href="/contacto">Solicitar Asesoría</Link>
