@@ -1,6 +1,7 @@
 'use client'
 
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState } from 'react'
+import { useFormStatus } from 'react-dom'
 import { getPlanSuggestion, type FormState } from '@/app/actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -31,7 +32,7 @@ function SubmitButton() {
 }
 
 export function PlanAssistantForm() {
-  const [state, formAction] = useFormState(getPlanSuggestion, initialState)
+  const [state, formAction] = useActionState(getPlanSuggestion, initialState)
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
