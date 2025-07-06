@@ -1,9 +1,16 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import { Puzzle } from 'lucide-react';
+
 import { DetailedServicesSection } from '@/components/services/DetailedServicesSection';
 import { PageHero } from '@/components/shared/PageHero';
 import { WorkProcessSection } from '@/components/services/WorkProcessSection';
 import { CTASection } from '@/components/shared/CTASection';
-import { Puzzle } from 'lucide-react';
+
+// Lazily load the heavy particles component to prevent it from blocking the main thread.
+const ParticlesBackground = dynamic(() => 
+  import('@/components/page/particles-background').then(mod => mod.ParticlesBackground)
+);
 
 export const metadata: Metadata = {
   title: 'Servicios de SEO, Desarrollo y Consultoría Digital',
@@ -23,7 +30,11 @@ export default function ServiciosPage() {
                   title="Soluciones a Medida para tu Éxito"
                   subtitle="Explora nuestros servicios de SEO, desarrollo y consultoría, diseñados para transformar tu presencia digital y generar resultados tangibles."
                   icon={Puzzle}
-              />
+              >
+                  <div className="absolute inset-0 -z-10 opacity-30">
+                    <ParticlesBackground />
+                  </div>
+              </PageHero>
               <DetailedServicesSection />
               <WorkProcessSection />
               <CTASection />
