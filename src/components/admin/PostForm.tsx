@@ -80,7 +80,7 @@ export function PostForm({ post }: { post?: Post | null }) {
         <Input
           id="imageUrl"
           name="imageUrl"
-          placeholder="https://placehold.co/1200x630.png"
+          placeholder="/noticias/nombre-imagen.png o https://..."
           required
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
