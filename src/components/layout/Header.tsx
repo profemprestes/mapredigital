@@ -58,7 +58,10 @@ export function Header() {
             alt="Mapre Digital Logo"
             width={140}
             height={40}
-            className={cn("h-auto transition-filter duration-300", hasScrolled && 'brightness-[0.1] dark:brightness-100')}
+            className={cn(
+              "h-auto transition-filter duration-300", 
+              hasScrolled ? 'brightness-[0.1] dark:brightness-100' : 'brightness-0 invert'
+            )}
             data-ai-hint="company logo"
             priority
           />
@@ -107,14 +110,18 @@ export function Header() {
                       exit={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {isSheetOpen ? <X className={cn("h-6 w-6", !hasScrolled && "text-white")} /> : <Menu className={cn("h-6 w-6", !hasScrolled && "text-white")} />}
+                      {isSheetOpen ? (
+                        <X className={cn("h-6 w-6", !hasScrolled && "text-primary-foreground")} />
+                      ) : (
+                        <Menu className={cn("h-6 w-6", !hasScrolled && "text-primary-foreground")} />
+                      )}
                     </motion.div>
                   </AnimatePresence>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card">
-                <SheetHeader className="sr-only">
-                  <SheetTitle>Menú de navegación</SheetTitle>
+                <SheetHeader>
+                  <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 flex h-full flex-col">
                   <ul className="flex flex-col items-start space-y-2 text-lg">
