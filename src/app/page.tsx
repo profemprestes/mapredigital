@@ -1,10 +1,10 @@
 import { HeroSection } from '@/components/page/hero-section';
-import { ServicesSection } from '@/components/page/services-section';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
+const ServicesSection = dynamic(() => import('@/components/page/services-section').then(mod => mod.ServicesSection));
 const TestimonialsSection = dynamic(() => import('@/components/page/testimonials-section').then(mod => mod.TestimonialsSection));
-
+const PlanAssistantSection = dynamic(() => import('@/components/page/plan-assistant-section').then(mod => mod.PlanAssistantSection));
 
 export const metadata: Metadata = {
   title: 'Impulsamos tu Negocio al Siguiente Nivel Digital',
@@ -18,6 +18,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <TestimonialsSection />
+      <PlanAssistantSection />
     </main>
   );
 }

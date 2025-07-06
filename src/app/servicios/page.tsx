@@ -1,6 +1,12 @@
-
-import { ServicesPageClient } from '@/components/services/ServicesPageClient';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import { Puzzle } from 'lucide-react';
+import { PageHero } from '@/components/shared/PageHero';
+
+const DetailedServicesSection = dynamic(() => import('@/components/services/DetailedServicesSection').then(mod => mod.DetailedServicesSection));
+const WorkProcessSection = dynamic(() => import('@/components/services/WorkProcessSection').then(mod => mod.WorkProcessSection));
+const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection));
+
 
 export const metadata: Metadata = {
   title: 'Servicios de SEO, Desarrollo y Consultoría Digital',
@@ -13,5 +19,18 @@ export const metadata: Metadata = {
 
 
 export default function ServiciosPage() {
-  return <ServicesPageClient />;
+  return (
+      <div className="flex min-h-screen flex-col bg-background font-body">
+          <main className="flex-1">
+              <PageHero 
+                  title="Soluciones a Medida para tu Éxito"
+                  subtitle="Explora nuestros servicios de SEO, desarrollo y consultoría, diseñados para transformar tu presencia digital y generar resultados tangibles."
+                  icon={Puzzle}
+              />
+              <DetailedServicesSection />
+              <WorkProcessSection />
+              <CTASection />
+          </main>
+      </div>
+  );
 }

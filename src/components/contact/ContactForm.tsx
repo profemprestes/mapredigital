@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -77,88 +78,96 @@ export function ContactForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <h2 className="font-headline text-2xl font-bold text-foreground">
-          Envíanos un Mensaje
-        </h2>
-        
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nombre Completo</FormLabel>
-              <FormControl>
-                <Input placeholder="Tu nombre" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="tu@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <FormField
-          control={form.control}
-          name="service"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Servicio de Interés</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+    <motion.div
+      className="rounded-xl bg-card p-8 shadow-lg border"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+    >
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <h2 className="font-headline text-2xl font-bold text-foreground">
+            Envíanos un Mensaje
+          </h2>
+          
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombre Completo</FormLabel>
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un servicio" />
-                  </SelectTrigger>
+                  <Input placeholder="Tu nombre" {...field} />
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="SEO Estratégico">SEO Estratégico</SelectItem>
-                  <SelectItem value="Herramientas a Medida">Herramientas a Medida</SelectItem>
-                  <SelectItem value="Consultoría Digital">Consultoría Digital</SelectItem>
-                  <SelectItem value="Otro">Otro</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tu Mensaje</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Cuéntanos cómo podemos ayudarte..."
-                  className="resize-none"
-                  rows={5}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105" size="lg">
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
-          Enviar Mensaje
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="tu@email.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="service"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Servicio de Interés</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecciona un servicio" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="SEO Estratégico">SEO Estratégico</SelectItem>
+                    <SelectItem value="Herramientas a Medida">Herramientas a Medida</SelectItem>
+                    <SelectItem value="Consultoría Digital">Consultoría Digital</SelectItem>
+                    <SelectItem value="Otro">Otro</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tu Mensaje</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Cuéntanos cómo podemos ayudarte..."
+                    className="resize-none"
+                    rows={5}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105" size="lg">
+            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
+            Enviar Mensaje
+          </Button>
+        </form>
+      </Form>
+    </motion.div>
   );
 }
