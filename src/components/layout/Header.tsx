@@ -23,26 +23,15 @@ export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(pathname);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  
-  useEffect(() => {
-    if (!isMounted) return;
     setHoveredPath(pathname);
-  }, [pathname, isMounted]);
+  }, [pathname]);
 
   const headerVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
   };
-
-  if (!isMounted) {
-    // Render a placeholder with the final background color to avoid layout shift and hydration errors
-    return <header className="sticky top-0 z-50 w-full bg-foreground h-20" />;
-  }
 
   return (
     <motion.header
