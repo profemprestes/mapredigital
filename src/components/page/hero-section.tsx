@@ -27,7 +27,7 @@ export function HeroSection() {
                   className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start opacity-0 animate-slide-up-fade"
                   style={{ animationDelay: '0.6s' }}
                 >
-                  <Button asChild size="lg" className="w-full bg-accent text-accent-foreground shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-accent/90 hover:shadow-xl sm:w-auto">
+                  <Button asChild size="lg" className="w-full bg-foreground text-background shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-foreground/90 hover:shadow-xl sm:w-auto">
                     <Link href="/contacto">Solicita tu Consulta Gratuita</Link>
                   </Button>
                    <Button asChild size="lg" variant="outline" className="w-full shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl sm:w-auto">

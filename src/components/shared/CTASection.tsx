@@ -26,7 +26,7 @@ export function CTASection() {
             asChild 
             size="lg" 
             variant="outline" 
-            className="border-2 border-primary-foreground bg-transparent text-primary-foreground transition-all duration-300 hover:bg-primary-foreground hover:text-accent hover:scale-105"
+            className="border-2 border-primary-foreground bg-transparent text-primary-foreground transition-all duration-300 hover:bg-primary-foreground hover:text-background hover:scale-105"
           >
             <Link href="/contacto">
               Contáctanos y empecemos

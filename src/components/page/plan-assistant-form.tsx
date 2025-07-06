@@ -26,7 +26,7 @@ const initialState: FormState = {
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" disabled={pending} size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+    <Button type="submit" disabled={pending} size="lg" className="w-full bg-foreground text-background hover:bg-foreground/90 transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg">
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" /> : null}
       {pending ? 'Generando...' : 'Obtener Recomendación'}
     </Button>

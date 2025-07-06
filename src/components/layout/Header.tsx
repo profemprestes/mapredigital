@@ -101,7 +101,7 @@ export function Header() {
           </TooltipProvider>
 
           <motion.div whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}>
-            <Button asChild className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
+            <Button asChild className="hidden md:flex bg-foreground text-background hover:bg-foreground/90 shadow-lg">
               <Link href="/contacto">Solicitar Asesoría</Link>
             </Button>
           </motion.div>
@@ -165,7 +165,7 @@ export function Header() {
                             <span>Chatea por WhatsApp</span>
                         </a>
                     </Button>
-                    <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Button asChild size="lg" className="w-full bg-foreground text-background hover:bg-foreground/90">
                       <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
                     </Button>
                   </div>
