@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import {
   Mail,
   Phone,
-  Linkedin,
+  Facebook,
   Instagram,
   Twitter,
   ArrowUp,
@@ -169,12 +169,12 @@ export function Footer() {
               </ul>
               <div className="mt-6 flex space-x-2">
                 <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Link href="#" aria-label="LinkedIn" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Linkedin className="h-5 w-5" />
+                  <Link href="https://www.facebook.com/MAPREUY" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                    <Facebook className="h-5 w-5" />
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Link href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                  <Link href="https://www.instagram.com/mapreuy/" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
                     <Instagram className="h-5 w-5" />
                   </Link>
                 </motion.div>
