@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Rocket, Eye } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -31,14 +30,18 @@ export function MissionVisionSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="container max-w-4xl">
+      <div className="container max-w-5xl">
         <div className="text-center mb-12">
             <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">Nuestra Filosofía</h2>
             <p className="mt-4 text-lg text-muted-foreground">Los dos pilares que guían nuestro propósito y dirección.</p>
         </div>
         
-        <div className="flex flex-col items-center gap-12 text-center md:flex-row md:items-start md:text-left md:gap-8">
-          <motion.div className="flex flex-col items-center md:items-start md:w-1/2" variants={itemVariants}>
+        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12">
+          {/* Misión */}
+          <motion.div 
+            className="flex flex-col items-center text-center md:items-start md:text-left md:border-r md:border-border md:pr-8" 
+            variants={itemVariants}
+          >
             <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
               <Rocket className="h-8 w-8 text-primary" aria-hidden="true" />
             </div>
@@ -48,9 +51,11 @@ export function MissionVisionSection() {
             </p>
           </motion.div>
 
-          <Separator orientation="vertical" className="hidden h-auto self-stretch md:block" />
-
-          <motion.div className="flex flex-col items-center md:items-start md:w-1/2" variants={itemVariants}>
+          {/* Visión */}
+          <motion.div 
+            className="flex flex-col items-center text-center md:items-start md:text-left md:pl-8" 
+            variants={itemVariants}
+          >
              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
               <Eye className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
