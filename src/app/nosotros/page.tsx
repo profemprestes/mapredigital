@@ -9,8 +9,8 @@ export default function NosotrosPage() {
     <div className="flex min-h-screen flex-col bg-background font-body">
       <main className="flex-1">
         <PageHero
-            title="Somos tu Socio Estratégico en el Mundo Digital"
-            subtitle="Fundada por Matías Prestes, el nombre 'Mapre' fusiona la identidad del fundador con la esencia de una propuesta de valor basada en la Maximización y la Presencia digital estratégica. Nacimos para desmitificar la complejidad del entorno online y ofrecer resultados tangibles."
+            title="Tu Socio Estratégico en el Mundo Digital"
+            subtitle="Conoce la historia, misión y los valores que nos impulsan a innovar."
         />
         <MissionVisionSection />
         <FounderSection />

@@ -70,7 +70,7 @@ export function ValuesSection() {
                   key={index}
                   variants={cardVariants}
                 >
-                  <Card className="h-full text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-transparent hover:border-primary bg-card/50">
+                  <Card className="h-full text-center transition-all duration-300 bg-transparent border-2 border-primary/20 shadow-lg hover:shadow-primary/20 hover:bg-card/80 hover:-translate-y-2">
                     <CardHeader className="items-center">
                       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                         {value.icon}
