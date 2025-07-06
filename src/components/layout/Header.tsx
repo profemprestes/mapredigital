@@ -43,12 +43,12 @@ export function Header() {
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/Portada_MAFRE.svg"
+            src="/Logo_Mapre.svg"
             alt="Mapre Digital Logo"
             width={140}
             height={40}
-            className="h-auto brightness-0 invert transition-filter duration-300"
-            data-ai-hint="company logo white"
+            className="h-auto transition-filter duration-300"
+            data-ai-hint="company logo"
             priority
           />
         </Link>
@@ -60,11 +60,12 @@ export function Header() {
               href={link.href}
               onMouseOver={() => setHoveredPath(link.href)}
               className={cn(
-                "relative rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
+                "relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
                 pathname === link.href && 'text-background'
               )}
             >
-              {link.label}
+              {link.icon}
+              <span>{link.label}</span>
               {hoveredPath === link.href && (
                 <motion.div
                   layoutId="header-underline"
