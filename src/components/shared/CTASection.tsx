@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 
 export function CTASection() {
   return (
-    <section className="bg-gradient-to-r from-primary to-accent py-16 md:py-24 text-primary-foreground">
+    <section className="bg-gradient-to-r from-foreground to-primary py-16 md:py-24 text-primary-foreground">
       <motion.div
         className="container text-center"
         initial={{ opacity: 0, y: 30 }}
