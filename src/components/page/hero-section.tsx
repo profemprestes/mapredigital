@@ -12,10 +12,14 @@ export function HeroSection() {
           <div className="container grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             <div className="text-center lg:text-left">
                 <h1 
-                  className="font-headline text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl opacity-0 animate-slide-up-fade uppercase bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                  className="font-headline text-5xl font-extrabold tracking-tighter text-foreground drop-shadow-lg sm:text-6xl md:text-7xl opacity-0 animate-slide-up-fade uppercase"
                   style={{ animationDelay: '0.2s' }}
                 >
-                  Impulsamos tu Negacio al Siguiente Nivel Digital
+                  Impulsamos tu Negocio al{' '}
+                  <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                    Siguiente Nivel
+                  </span>
+                  {' '}Digital
                 </h1>
                 <p 
                   className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground md:text-xl opacity-0 animate-slide-up-fade"
