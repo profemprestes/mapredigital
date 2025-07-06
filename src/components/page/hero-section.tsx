@@ -1,14 +1,10 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { HeroLogo } from './hero-logo';
-import type { ReactNode } from 'react';
 
-export function HeroSection({ children }: { children?: ReactNode }) {
+export function HeroSection() {
     return (
         <section className="relative flex h-screen min-h-[700px] items-center overflow-hidden">
-          <div className="absolute inset-0 -z-10 opacity-30">
-            {children}
-          </div>
           <div className="container grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             <div className="text-center lg:text-left">
                 <h1 

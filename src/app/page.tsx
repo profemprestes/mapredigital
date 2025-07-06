@@ -1,13 +1,11 @@
 import { HeroSection } from '@/components/page/hero-section';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import { ClientParticles } from '@/components/page/ClientParticles';
 
 const ServicesSection = dynamic(() => import('@/components/page/services-section').then(mod => mod.ServicesSection));
 const TestimonialsSection = dynamic(() => import('@/components/page/testimonials-section').then(mod => mod.TestimonialsSection));
 const PlanAssistantSection = dynamic(() => import('@/components/page/plan-assistant-section').then(mod => mod.PlanAssistantSection));
-const ParticlesBackground = dynamic(() => 
-  import('@/components/page/particles-background').then(mod => mod.ParticlesBackground)
-);
 
 export const metadata: Metadata = {
   title: 'Impulsamos tu Negocio al Siguiente Nivel Digital',
@@ -17,10 +15,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
-      <HeroSection>
-        <ParticlesBackground />
-      </HeroSection>
+    <main className="relative">
+      <div className="absolute inset-0 -z-10 opacity-30">
+        <ClientParticles />
+      </div>
+      
+      <HeroSection />
       <ServicesSection />
       <TestimonialsSection />
       <PlanAssistantSection />
