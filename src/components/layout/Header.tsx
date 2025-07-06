@@ -1,106 +1,147 @@
+
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Home, Briefcase, Users, Mail, Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/nosotros', label: 'Nosotros' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: '/', label: 'Inicio', icon: <Home className="h-5 w-5" /> },
+  { href: '/servicios', label: 'Servicios', icon: <Briefcase className="h-5 w-5" /> },
+  { href: '/nosotros', label: 'Nosotros', icon: <Users className="h-5 w-5" /> },
+  { href: '/contacto', label: 'Contacto', icon: <Mail className="h-5 w-5" /> },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [hoveredPath, setHoveredPath] = useState(pathname);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    setHoveredPath(pathname);
+  }, [pathname]);
+
+  const headerVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <motion.header
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        hasScrolled ? 'border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md' : 'bg-transparent'
+      )}
+    >
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
-        {/* Left Side: Logo and Desktop Navigation */}
-        <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center" onClick={() => isSheetOpen && setIsSheetOpen(false)}>
-            <Image
-              src="/Portada_MAFRE.svg"
-              alt="Mapre Digital Logo"
-              width={140}
-              height={40}
-              className="h-auto"
-              data-ai-hint="company logo"
-              priority
-            />
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/Portada_MAFRE.svg"
+            alt="Mapre Digital Logo"
+            width={140}
+            height={40}
+            className={cn("h-auto transition-filter duration-300", hasScrolled && 'brightness-[0.1] dark:brightness-100')}
+            data-ai-hint="company logo"
+            priority
+          />
+        </Link>
 
-        {/* Right Side: CTA and Mobile Menu */}
+        <nav className="hidden md:flex items-center space-x-2" onMouseLeave={() => setHoveredPath(pathname)}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onMouseOver={() => setHoveredPath(link.href)}
+              className={cn(
+                "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                pathname === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary',
+                hasScrolled ? '' : 'text-primary-foreground/80 hover:text-primary-foreground'
+              )}
+            >
+              {link.label}
+              {hoveredPath === link.href && (
+                <motion.div
+                  layoutId="header-underline"
+                  className="absolute bottom-0 left-0 h-0.5 w-full bg-primary"
+                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                />
+              )}
+            </Link>
+          ))}
+        </nav>
+
         <div className="flex items-center gap-4">
-            <Button asChild className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90">
+          <motion.div whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}>
+            <Button asChild className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg">
               <Link href="/contacto">Solicitar Asesoría</Link>
             </Button>
+          </motion.div>
 
-            {/* Mobile Navigation */}
-            <div className="md:hidden">
-              <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="outline" size="icon">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Abrir menú</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-                    <SheetHeader>
-                        <SheetTitle>
-                            <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
-                            <Image
-                                src="/Portada_MAFRE.svg"
-                                alt="Mapre Digital Logo"
-                                width={140}
-                                height={40}
-                                className="h-auto"
-                                data-ai-hint="company logo"
-                            />
-                            </Link>
-                        </SheetTitle>
-                    </SheetHeader>
-                  <div className="mt-8 flex h-full flex-col">
-                    <ul className="flex flex-col items-start space-y-6 text-lg">
-                      {navLinks.map((link) => (
-                        <li key={link.href}>
-                            <Link
-                              href={link.href}
-                              onClick={() => setIsSheetOpen(false)}
-                              className="font-medium text-foreground/80 transition-colors hover:text-foreground"
-                            >
-                              {link.label}
-                            </Link>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-auto pb-8">
-                       <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                        <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
-                      </Button>
-                    </div>
+          <div className="md:hidden">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Abrir menú">
+                  <AnimatePresence initial={false} mode="wait">
+                    <motion.div
+                      key={isSheetOpen ? 'x' : 'menu'}
+                      initial={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: isSheetOpen ? -90 : 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {isSheetOpen ? <X className={cn("h-6 w-6", !hasScrolled && "text-white")} /> : <Menu className={cn("h-6 w-6", !hasScrolled && "text-white")} />}
+                    </motion.div>
+                  </AnimatePresence>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card">
+                <div className="mt-8 flex h-full flex-col">
+                  <ul className="flex flex-col items-start space-y-2 text-lg">
+                    {navLinks.map((link) => (
+                      <li key={link.href} className="w-full">
+                        <Link
+                          href={link.href}
+                          onClick={() => setIsSheetOpen(false)}
+                          className={cn(
+                            "flex items-center gap-4 w-full rounded-md p-3 font-medium transition-colors",
+                            pathname === link.href ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted'
+                          )}
+                        >
+                          {link.icon}
+                          <span>{link.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pb-8">
+                    <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
+                    </Button>
                   </div>
-                </SheetContent>
-              </Sheet>
-            </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
