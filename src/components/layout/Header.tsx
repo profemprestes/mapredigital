@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Home, Briefcase, Users, Mail, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -113,6 +113,9 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card">
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Menú de navegación</SheetTitle>
+                </SheetHeader>
                 <div className="mt-8 flex h-full flex-col">
                   <ul className="flex flex-col items-start space-y-2 text-lg">
                     {navLinks.map((link) => (
