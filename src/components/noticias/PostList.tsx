@@ -26,7 +26,7 @@ const itemVariants = {
   },
 };
 
-export function PostList({ posts }: { posts: Post[] }) {
+export function PostList({ posts }: { posts: (Post & { _count: { comments: number } })[] }) {
   return (
     <motion.div
       className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"

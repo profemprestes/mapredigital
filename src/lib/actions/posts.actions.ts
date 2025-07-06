@@ -81,6 +81,11 @@ export async function getAllPosts() {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      _count: {
+        select: { comments: true },
+      },
+    },
   })
   return posts
 }
@@ -91,6 +96,11 @@ export async function getPublishedPosts() {
     where: { published: true },
     orderBy: {
       createdAt: 'desc',
+    },
+    include: {
+      _count: {
+        select: { comments: true },
+      },
     },
   })
   return posts
@@ -123,6 +133,11 @@ export async function getLatestPosts(limit: number = 3) {
       createdAt: 'desc',
     },
     take: limit,
+    include: {
+      _count: {
+        select: { comments: true },
+      },
+    },
   });
   return posts;
 }
