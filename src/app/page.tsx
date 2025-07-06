@@ -1,4 +1,4 @@
-import { Header } from '@/components/page/header';
+import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/page/footer';
 import { HeroSection } from '@/components/page/hero-section';
 import { ServicesSection } from '@/components/page/services-section';
