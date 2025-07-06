@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ParticlesBackground } from './particles-background';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,12 +29,9 @@ const itemVariants = {
 
 export function HeroSection() {
     return (
-        <section className="relative py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <ParticlesBackground />
-          </div>
+        <section className="py-24 md:py-32">
           <motion.div 
-            className="container text-center relative z-10"
+            className="container text-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
