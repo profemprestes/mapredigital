@@ -13,10 +13,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/', label: 'Inicio', icon: <Home className="h-5 w-5" /> },
-  { href: '/servicios', label: 'Servicios', icon: <Briefcase className="h-5 w-5" /> },
-  { href: '/nosotros', label: 'Nosotros', icon: <Users className="h-5 w-5" /> },
-  { href: '/contacto', label: 'Contacto', icon: <Mail className="h-5 w-5" /> },
+  { href: '/', label: 'Inicio', icon: Home },
+  { href: '/servicios', label: 'Servicios', icon: Briefcase },
+  { href: '/nosotros', label: 'Nosotros', icon: Users },
+  { href: '/contacto', label: 'Contacto', icon: Mail },
 ];
 
 export function Header() {
@@ -54,27 +54,30 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center space-x-2" onMouseLeave={() => setHoveredPath(pathname)}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onMouseOver={() => setHoveredPath(link.href)}
-              className={cn(
-                "relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
-                pathname === link.href && 'text-background'
-              )}
-            >
-              {link.icon}
-              <span>{link.label}</span>
-              {hoveredPath === link.href && (
-                <motion.div
-                  layoutId="header-underline"
-                  className="absolute bottom-0 left-0 h-0.5 w-full bg-accent"
-                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                />
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onMouseOver={() => setHoveredPath(link.href)}
+                className={cn(
+                  "relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-background/80 transition-colors hover:text-background",
+                  pathname === link.href && 'text-background'
+                )}
+              >
+                <Icon className="h-5 w-5" />
+                <span>{link.label}</span>
+                {hoveredPath === link.href && (
+                  <motion.div
+                    layoutId="header-underline"
+                    className="absolute bottom-0 left-0 h-0.5 w-full bg-accent"
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2 md:gap-4">
@@ -122,21 +125,24 @@ export function Header() {
                 </SheetHeader>
                 <div className="mt-8 flex h-full flex-col">
                   <ul className="flex flex-col items-start space-y-2 text-lg">
-                    {navLinks.map((link) => (
-                      <li key={link.href} className="w-full">
-                        <Link
-                          href={link.href}
-                          onClick={() => setIsSheetOpen(false)}
-                          className={cn(
-                            "flex items-center gap-4 w-full rounded-md p-3 font-medium transition-colors",
-                            pathname === link.href ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted'
-                          )}
-                        >
-                          {link.icon}
-                          <span>{link.label}</span>
-                        </Link>
-                      </li>
-                    ))}
+                    {navLinks.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <li key={link.href} className="w-full">
+                          <Link
+                            href={link.href}
+                            onClick={() => setIsSheetOpen(false)}
+                            className={cn(
+                              "flex items-center gap-4 w-full rounded-md p-3 font-medium transition-colors",
+                              pathname === link.href ? 'bg-primary/10 text-primary' : 'text-foreground/80 hover:bg-muted'
+                            )}
+                          >
+                            <Icon className="h-5 w-5" />
+                            <span>{link.label}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                   <div className="mt-auto pb-8">
                     <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
