@@ -50,9 +50,9 @@ export function TestimonialsSection() {
                           src={testimonial.logo}
                           alt={`${testimonial.company} logo`}
                           width={100}
-                          height={40}
+                          height={33}
                           loading="lazy"
-                          className="object-contain self-start"
+                          className="object-contain self-start h-auto"
                           data-ai-hint={testimonial.dataAiHint}
                         />
                          <div>

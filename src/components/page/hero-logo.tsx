@@ -16,6 +16,7 @@ export function HeroLogo() {
           height={400}
           className="object-contain drop-shadow-2xl"
           data-ai-hint="company logo"
+          priority
         />
       </div>
     </div>
