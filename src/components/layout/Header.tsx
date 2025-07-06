@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -42,16 +41,20 @@ export function Header() {
       className="sticky top-0 z-50 w-full bg-foreground text-background shadow-lg"
     >
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/Portada_MAFRE.svg"
             alt="Mapre Digital Logo"
-            width={140}
-            height={40}
-            className="h-auto transition-filter duration-300"
+            width={100}
+            height={35}
+            className="h-auto flex-shrink-0 transition-filter duration-300"
             data-ai-hint="company logo"
             priority
           />
+          <div className="md:hidden">
+            <p className="font-headline text-sm font-bold text-background leading-tight">Mapre Digital</p>
+            <p className="text-[10px] text-background/80 leading-tight">Impulsamos tu Negocio al Siguiente Nivel</p>
+          </div>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-2" onMouseLeave={() => setHoveredPath(pathname)}>
