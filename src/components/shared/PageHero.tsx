@@ -1,7 +1,7 @@
-// src/components/services/HeroSection.tsx
 'use client';
 
 import { motion } from 'framer-motion';
+import { ParticlesBackground } from '@/components/page/particles-background';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,9 +26,17 @@ const itemVariants = {
   },
 };
 
-export function HeroSection() {
+interface PageHeroProps {
+    title: string;
+    subtitle: string;
+}
+
+export function PageHero({ title, subtitle }: PageHeroProps) {
     return (
-        <section className="bg-background py-24 md:py-32">
+        <section className="relative bg-foreground py-24 md:py-32 overflow-hidden">
+             <div className="absolute inset-0 -z-10 opacity-30">
+                <ParticlesBackground />
+            </div>
           <motion.div 
             className="container text-center relative z-10"
             variants={containerVariants}
@@ -36,16 +44,16 @@ export function HeroSection() {
             animate="visible"
           >
             <motion.h1 
-              className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl"
+              className="font-headline text-4xl font-bold tracking-tight text-background sm:text-5xl md:text-6xl"
               variants={itemVariants}
             >
-              Servicios Diseñados para tu Crecimiento Digital
+              {title}
             </motion.h1>
             <motion.p 
-              className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground md:text-xl"
+              className="mx-auto mt-6 max-w-3xl text-lg text-slate-300 md:text-xl"
               variants={itemVariants}
             >
-              Desde el posicionamiento en buscadores hasta el desarrollo de herramientas a medida, te ofrecemos soluciones que generan un impacto real.
+              {subtitle}
             </motion.p>
           </motion.div>
         </section>
