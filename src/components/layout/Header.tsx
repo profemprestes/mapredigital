@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -90,7 +91,7 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
                 <SheetHeader className="p-4 border-b">
                   <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
-                  <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
+                  <Link href="/" className="flex flex-col items-center text-center" onClick={() => setIsSheetOpen(false)}>
                     <Image
                       src="/Portada_MAFRE.svg"
                       alt="Mapre Digital Logo"
@@ -99,6 +100,10 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
                       className="h-auto w-auto"
                       data-ai-hint="company logo"
                     />
+                    <div className="mt-2">
+                        <p className="font-headline text-lg font-bold text-foreground">Mapre Digital</p>
+                        <p className="text-xs text-muted-foreground">Impulsamos tu Negocio al Siguiente Nivel Digital</p>
+                    </div>
                   </Link>
                 </SheetHeader>
                 <div className="flex-1 flex flex-col p-4 overflow-y-auto">
