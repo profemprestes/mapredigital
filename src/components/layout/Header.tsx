@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -24,7 +24,7 @@ export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(pathname);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setHoveredPath(pathname);
   }, [pathname]);
 
@@ -43,7 +43,7 @@ export function Header() {
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/Logo_Mapre.svg"
+            src="/Portada_MAFRE.svg"
             alt="Mapre Digital Logo"
             width={140}
             height={40}
