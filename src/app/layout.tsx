@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Roboto } from 'next/font/google';
+import { SocialsBanner } from '@/components/shared/SocialsBanner';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">{children}</main>
+          <SocialsBanner />
           <Footer />
         </div>
         <Toaster />
