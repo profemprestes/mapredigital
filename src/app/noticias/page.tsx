@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import nextDynamic from 'next/dynamic';
 import { Newspaper } from 'lucide-react';
 import { PageHero } from '@/components/shared/PageHero';
 import { getPublishedPosts } from '@/lib/actions/posts.actions';
 import { PostList } from '@/components/noticias/PostList';
 
-const ParticlesBackground = dynamic(() => 
+const ParticlesBackground = nextDynamic(() => 
   import('@/components/page/particles-background').then(mod => mod.ParticlesBackground)
 );
 
