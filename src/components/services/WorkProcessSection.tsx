@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Search, Compass, Code, TrendingUp } from 'lucide-react';
 
 const processSteps = [
@@ -30,36 +27,12 @@ const processSteps = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-};
-
 export function WorkProcessSection() {
   return (
     <section className="py-16 md:py-24 bg-foreground text-background">
       <div className="container">
-        <motion.div
+        <div
           className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
         >
           <h2 className="font-headline text-3xl font-bold sm:text-4xl">
             Nuestra Metodología de Trabajo
@@ -67,24 +40,17 @@ export function WorkProcessSection() {
           <p className="mt-4 text-lg text-muted">
             Un proceso probado en 4 fases que garantiza resultados transparentes y efectivos.
           </p>
-        </motion.div>
+        </div>
         
         <div className="mt-20">
-          <motion.div 
-            className="relative flex flex-col items-start justify-between gap-16 md:flex-row md:gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div className="relative flex flex-col items-start justify-between gap-16 md:flex-row md:gap-8">
             {/* The connecting line for desktop */}
             <div className="absolute left-0 top-10 hidden h-1 w-full rounded-full bg-primary/30 md:block"></div>
             
             {processSteps.map((step, index) => (
-              <motion.div 
+              <div
                 key={step.step} 
                 className="relative z-10 flex w-full flex-row items-start gap-6 text-left md:w-auto md:flex-col md:items-center md:gap-0 md:text-center"
-                variants={itemVariants}
               >
                 <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full border-4 border-primary bg-foreground shadow-lg">
                   {step.icon}
@@ -93,9 +59,9 @@ export function WorkProcessSection() {
                   <h3 className="font-headline text-xl font-bold text-background">{step.title}</h3>
                   <p className="mt-2 text-sm text-secondary">{step.description}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,35 +1,8 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Rocket, Eye } from 'lucide-react';
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: 'easeOut',
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-};
 
 export function MissionVisionSection() {
   return (
-    <motion.section 
-      className="bg-card py-16 md:py-24"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <section className="bg-card py-16 md:py-24">
       <div className="container max-w-5xl">
         <div className="text-center mb-12">
             <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">Nuestra Filosofía</h2>
@@ -38,10 +11,7 @@ export function MissionVisionSection() {
         
         <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12">
           {/* Misión */}
-          <motion.div 
-            className="flex flex-col items-center text-center md:items-start md:text-left md:border-r md:border-border md:pr-8" 
-            variants={itemVariants}
-          >
+          <div className="flex flex-col items-center text-center md:items-start md:text-left md:border-r md:border-border md:pr-8">
             <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
               <Rocket className="h-8 w-8 text-primary" aria-hidden="true" />
             </div>
@@ -49,13 +19,10 @@ export function MissionVisionSection() {
             <p className="mt-2 text-lg text-muted-foreground">
               Transformar la manera en que las empresas interactúan con el mundo online, convirtiéndolas en líderes dentro de su nicho a través de estrategias digitales innovadoras, herramientas a medida y una consultoría basada en la transparencia y los resultados.
             </p>
-          </motion.div>
+          </div>
 
           {/* Visión */}
-          <motion.div 
-            className="flex flex-col items-center text-center md:items-start md:text-left md:pl-8" 
-            variants={itemVariants}
-          >
+          <div className="flex flex-col items-center text-center md:items-start md:text-left md:pl-8">
              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
               <Eye className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
@@ -63,9 +30,9 @@ export function MissionVisionSection() {
             <p className="mt-2 text-lg text-muted-foreground">
               Ser el referente en innovación y estrategia digital en Uruguay, reconocido por impulsar el crecimiento sostenible de nuestros clientes a nivel global. Aspiramos a construir un futuro donde cualquier empresa, sin importar su tamaño, pueda competir en igualdad de condiciones en el ecosistema digital.
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

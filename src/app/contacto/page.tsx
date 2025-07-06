@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { ContactPageClient } from '@/components/contact/ContactPageClient';
+import { Mail } from 'lucide-react';
+
+import { PageHero } from '@/components/shared/PageHero';
+import { ContactForm } from '@/components/contact/ContactForm';
+import { ContactDetails } from '@/components/contact/ContactDetails';
 
 export const metadata: Metadata = {
   title: 'Contacto - Hablemos de tu Proyecto',
@@ -11,5 +15,26 @@ export const metadata: Metadata = {
 };
 
 export default function ContactoPage() {
-  return <ContactPageClient />;
+  return (
+    <div className="bg-background">
+      <PageHero 
+        title="¿Listo para Empezar?"
+        subtitle="Ponte en contacto con nosotros. Estamos aquí para responder tus preguntas y dar el primer paso juntos."
+        icon={Mail}
+        className="min-h-[40vh] py-16 md:py-20"
+      />
+      <div className="bg-background">
+        <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
+            <div className="rounded-xl bg-card p-8 shadow-lg border">
+              <ContactForm />
+            </div>
+            <div className="mt-8 lg:mt-0">
+              <ContactDetails />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

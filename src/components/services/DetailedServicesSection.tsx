@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { CheckCircle2, Target, Code, MessageCircle } from 'lucide-react';
 
 const services = [
@@ -48,30 +45,14 @@ const services = [
   },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-};
-
 export function DetailedServicesSection() {
   return (
     <div id="services-detailed">
       {services.map((service) => (
-        <motion.section
+        <section
           id={service.id}
           key={service.id}
           className={`py-16 md:py-24 ${service.bgColor}`}
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
         >
           <div className="container grid grid-cols-1 items-center gap-12 lg:grid-cols-3 lg:gap-16">
             <div className="flex justify-center lg:col-span-1">
@@ -97,7 +78,7 @@ export function DetailedServicesSection() {
               </ul>
             </div>
           </div>
-        </motion.section>
+        </section>
       ))}
     </div>
   );

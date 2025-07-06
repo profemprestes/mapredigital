@@ -1,8 +1,5 @@
-'use client';
-
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
@@ -32,54 +29,19 @@ const testimonials = [
     },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const cardVariants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-};
-      
 export function TestimonialsSection() {
     return (
         <section id="testimonials" className="py-16 md:py-24 bg-background">
           <div className="container">
-            <motion.div 
-              className="mx-auto max-w-2xl text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
+            <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">Historias de Éxito</h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Descubre cómo hemos ayudado a otros negocios a crecer.
               </p>
-            </motion.div>
-            <motion.div 
-              className="mt-16 grid gap-8 md:grid-cols-1 lg:grid-cols-3"
-              variants={sectionVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </div>
+            <div className="mt-16 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
               {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                >
+                <div key={index}>
                   <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-2 border bg-card">
                     <CardContent className="p-8 relative">
                       <Quote className="absolute top-4 right-4 h-12 w-12 text-primary/10" aria-hidden="true" />
@@ -102,9 +64,9 @@ export function TestimonialsSection() {
                       </p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
     );
