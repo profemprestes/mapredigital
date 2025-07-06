@@ -24,7 +24,7 @@ export function PlanAssistantSection() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
+              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             >
               <PlanAssistantForm />
             </motion.div>
