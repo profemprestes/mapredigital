@@ -64,7 +64,7 @@ export function WorkProcessSection() {
           <h2 className="font-headline text-3xl font-bold sm:text-4xl">
             Nuestra Metodología de Trabajo
           </h2>
-          <p className="mt-4 text-lg text-secondary">
+          <p className="mt-4 text-lg text-muted">
             Un proceso probado en 4 fases que garantiza resultados transparentes y efectivos.
           </p>
         </motion.div>

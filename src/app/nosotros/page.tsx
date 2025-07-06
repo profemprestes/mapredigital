@@ -1,9 +1,11 @@
 import { MissionVisionSection } from '@/components/about/MissionVisionSection';
-import { FounderSection } from '@/components/about/FounderSection';
-import { ValuesSection } from '@/components/about/ValuesSection';
-import { CTASection } from '@/components/shared/CTASection';
 import { PageHero } from '@/components/shared/PageHero';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+
+const FounderSection = dynamic(() => import('@/components/about/FounderSection').then(mod => mod.FounderSection), { ssr: false });
+const ValuesSection = dynamic(() => import('@/components/about/ValuesSection').then(mod => mod.ValuesSection), { ssr: false });
+const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Sobre Nosotros - Nuestra Historia y Misión',

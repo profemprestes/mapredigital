@@ -1,8 +1,11 @@
 import { DetailedServicesSection } from '@/components/services/DetailedServicesSection';
-import { WorkProcessSection } from '@/components/services/WorkProcessSection';
-import { CTASection } from '@/components/shared/CTASection';
 import { PageHero } from '@/components/shared/PageHero';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+
+const WorkProcessSection = dynamic(() => import('@/components/services/WorkProcessSection').then(mod => mod.WorkProcessSection), { ssr: false });
+const CTASection = dynamic(() => import('@/components/shared/CTASection').then(mod => mod.CTASection), { ssr: false });
+
 
 export const metadata: Metadata = {
   title: 'Servicios de SEO, Desarrollo y Consultoría Digital',

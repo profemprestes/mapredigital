@@ -59,11 +59,11 @@ export function FounderSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h2 className="font-headline text-3xl font-bold text-background sm:text-4xl mb-4">Nuestro Fundador</h2>
-            <h3 className="font-headline text-2xl font-bold text-primary">Matías Prestes</h3>
-            <p className="mt-4 text-lg text-secondary">
+            <h3 className="font-headline text-2xl font-bold text-accent">Matías Prestes</h3>
+            <p className="mt-4 text-lg text-muted">
               Con una pasión por la tecnología y un enfoque en resultados, Matías Prestes fundó Mapre Digital para desmitificar la complejidad del entorno digital y ofrecer soluciones claras y efectivas.
             </p>
-            <p className="mt-4 text-lg text-secondary">
+            <p className="mt-4 text-lg text-muted">
               Su filosofía se centra en la colaboración estrecha con cada cliente, entendiendo que el éxito digital no es un producto, sino un proceso de mejora continua. Cree firmemente que las herramientas adecuadas y una estrategia bien ejecutada son la clave para desbloquear el verdadero potencial de cualquier negocio en el mundo online.
             </p>
           </motion.div>

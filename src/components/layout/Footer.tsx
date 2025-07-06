@@ -91,7 +91,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Home className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <Home className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Inicio</span>
                     </Link>
                   </motion.div>
@@ -99,7 +99,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <LayoutGrid className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <LayoutGrid className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Servicios</span>
                     </Link>
                   </motion.div>
@@ -107,7 +107,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/nosotros" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Users className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <Users className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Nosotros</span>
                     </Link>
                   </motion.div>
@@ -115,7 +115,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/contacto" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <MessageSquare className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <MessageSquare className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Contacto</span>
                     </Link>
                   </motion.div>
@@ -130,7 +130,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#seo" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Target className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <Target className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Posicionamiento Web (SEO)</span>
                     </Link>
                   </motion.div>
@@ -138,7 +138,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#tools" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Wrench className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <Wrench className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Herramientas a Medida</span>
                     </Link>
                   </motion.div>
@@ -146,7 +146,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#consulting" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Lightbulb className="h-4 w-4 text-secondary" aria-hidden="true" />
+                      <Lightbulb className="h-4 w-4 text-muted" aria-hidden="true" />
                       <span>Consultoría Digital</span>
                     </Link>
                   </motion.div>
@@ -159,11 +159,11 @@ export function Footer() {
               <h3 className="text-lg font-semibold text-background">Contacto</h3>
               <ul className="mt-4 space-y-3">
                 <li className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-secondary" aria-hidden="true" />
+                  <Mail className="h-5 w-5 text-muted" aria-hidden="true" />
                   <motion.a whileHover={itemHover} href="mailto:profematiasprestes@gmail.com" className="text-sm hover:text-background transition-colors">profematiasprestes@gmail.com</motion.a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-secondary" aria-hidden="true" />
+                  <Phone className="h-5 w-5 text-muted" aria-hidden="true" />
                   <motion.a whileHover={itemHover} href="tel:+59897338241" className="text-sm hover:text-background transition-colors">+598 097 338 241</motion.a>
                 </li>
               </ul>

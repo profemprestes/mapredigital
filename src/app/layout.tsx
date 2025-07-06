@@ -2,9 +2,11 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import { Roboto } from 'next/font/google';
-import { SocialsBanner } from '@/components/shared/SocialsBanner';
+import dynamic from 'next/dynamic';
+
+const SocialsBanner = dynamic(() => import('@/components/shared/SocialsBanner').then(mod => mod.SocialsBanner), { ssr: false });
+const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer), { ssr: false });
 
 const roboto = Roboto({
   subsets: ['latin'],
