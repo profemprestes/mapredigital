@@ -17,9 +17,9 @@ export function HeroSection() {
                 >
                   Impulsamos tu Negocio al{' '}
                   <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                    Siguiente Nivel
+                    Siguiente
                   </span>
-                  {' '}Digital
+                  {' '}Nivel Digital
                 </h1>
                 <p 
                   className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground md:text-xl opacity-0 animate-slide-up-fade"
