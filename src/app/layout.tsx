@@ -1,12 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Header } from '@/components/layout/Header';
 import { Poppins, PT_Sans } from 'next/font/google';
-import dynamic from 'next/dynamic';
-
-const SocialsBanner = dynamic(() => import('@/components/shared/SocialsBanner').then(mod => mod.SocialsBanner));
-const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer));
+import MainLayout from '@/components/layout/MainLayout';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -87,12 +83,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://wa.me" />
       </head>
       <body className={`${poppins.variable} ${ptSans.variable} font-body antialiased bg-background`} suppressHydrationWarning={true}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <SocialsBanner />
-          <Footer />
-        </div>
+        <MainLayout>{children}</MainLayout>
         <Toaster />
       </body>
     </html>

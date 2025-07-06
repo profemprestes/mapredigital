@@ -19,7 +19,7 @@ const navLinks = [
   { href: '/contacto', label: 'Contacto', icon: Mail },
 ];
 
-export function Header() {
+export function Header({ isHomePage }: { isHomePage: boolean }) {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(pathname);
@@ -49,7 +49,7 @@ export function Header() {
             height={35}
             className="h-auto flex-shrink-0 transition-filter duration-300"
             data-ai-hint="company logo"
-            priority
+            priority={isHomePage}
           />
           <div className="md:hidden">
             <p className="font-headline text-sm font-bold text-background leading-tight">Mapre Digital</p>
