@@ -24,7 +24,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => isSheetOpen && setIsSheetOpen(false)}>
           <Image
-            src="/assets/logo_mapre.jpg"
+            src="/Portada_MAFRE.svg"
             alt="Mapre Digital Logo"
             width={140}
             height={40}
@@ -72,7 +72,7 @@ export function Header() {
                         <SheetTitle>
                             <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
                             <Image
-                                src="/assets/logo_mapre.jpg"
+                                src="/Portada_MAFRE.svg"
                                 alt="Mapre Digital Logo"
                                 width={140}
                                 height={40}

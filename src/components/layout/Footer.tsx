@@ -12,7 +12,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/assets/logo_mapre.jpg"
+                src="/Logo_Mapre.svg"
                 alt="Mapre Digital Logo"
                 width={150}
                 height={40}

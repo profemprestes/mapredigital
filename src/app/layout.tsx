@@ -1,6 +1,17 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import {Toaster} from '@/components/ui/toaster';
+import { Toaster } from "@/components/ui/toaster";
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
+
 
 export const metadata: Metadata = {
   title: 'Mapre Digital',
@@ -13,21 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://wa.me" />
       </head>
-      <body className="font-body antialiased" suppressHydrationWarning={true}>
-        {children}
+      <body className={`${roboto.variable} font-body antialiased flex flex-col min-h-screen bg-background`} suppressHydrationWarning={true}>
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
         <Toaster />
       </body>
     </html>
