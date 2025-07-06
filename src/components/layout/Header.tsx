@@ -122,6 +122,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
                 <SheetHeader className="p-4 border-b">
+                  <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                   <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
                     <Image
                       src="/Portada_MAFRE.svg"
