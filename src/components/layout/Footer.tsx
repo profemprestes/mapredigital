@@ -31,7 +31,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               <li><Link href="/" className="text-sm hover:text-white transition-colors">Inicio</Link></li>
               <li><Link href="/servicios" className="text-sm hover:text-white transition-colors">Servicios</Link></li>
-              <li><Link href="#testimonials" className="text-sm hover:text-white transition-colors">Nosotros</Link></li>
+              <li><Link href="/nosotros" className="text-sm hover:text-white transition-colors">Nosotros</Link></li>
               <li><Link href="/contacto" className="text-sm hover:text-white transition-colors">Contacto</Link></li>
             </ul>
           </div>
