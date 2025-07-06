@@ -2,17 +2,24 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from '@/components/layout/Header';
-import { Roboto } from 'next/font/google';
+import { Poppins, PT_Sans } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
 const SocialsBanner = dynamic(() => import('@/components/shared/SocialsBanner').then(mod => mod.SocialsBanner));
 const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => mod.Footer));
 
-const roboto = Roboto({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['500', '700', '800', '900'],
   display: 'swap',
-  variable: '--font-roboto',
+  variable: '--font-poppins',
+});
+
+const ptSans = PT_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-pt-sans',
 });
 
 const siteConfig = {
@@ -79,7 +86,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://wa.me" />
       </head>
-      <body className={`${roboto.variable} font-body antialiased bg-background`} suppressHydrationWarning={true}>
+      <body className={`${poppins.variable} ${ptSans.variable} font-body antialiased bg-background`} suppressHydrationWarning={true}>
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">{children}</main>
