@@ -4,7 +4,21 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Instagram, Twitter, ArrowUp } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Instagram,
+  Twitter,
+  ArrowUp,
+  Home,
+  LayoutGrid,
+  Users,
+  MessageSquare,
+  Target,
+  Wrench,
+  Lightbulb,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function Footer() {
@@ -73,21 +87,70 @@ export function Footer() {
             {/* Column 2: Quick Links */}
             <div>
               <h3 className="text-lg font-semibold text-background">Navegación</h3>
-              <ul className="mt-4 space-y-2">
-                <li><motion.div whileHover={itemHover}><Link href="/" className="text-sm hover:text-background transition-colors">Inicio</Link></motion.div></li>
-                <li><motion.div whileHover={itemHover}><Link href="/servicios" className="text-sm hover:text-background transition-colors">Servicios</Link></motion.div></li>
-                <li><motion.div whileHover={itemHover}><Link href="/nosotros" className="text-sm hover:text-background transition-colors">Nosotros</Link></motion.div></li>
-                <li><motion.div whileHover={itemHover}><Link href="/contacto" className="text-sm hover:text-background transition-colors">Contacto</Link></motion.div></li>
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <Home className="h-4 w-4 text-secondary" />
+                      <span>Inicio</span>
+                    </Link>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/servicios" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <LayoutGrid className="h-4 w-4 text-secondary" />
+                      <span>Servicios</span>
+                    </Link>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/nosotros" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <Users className="h-4 w-4 text-secondary" />
+                      <span>Nosotros</span>
+                    </Link>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/contacto" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <MessageSquare className="h-4 w-4 text-secondary" />
+                      <span>Contacto</span>
+                    </Link>
+                  </motion.div>
+                </li>
               </ul>
             </div>
 
             {/* Column 3: Services */}
             <div>
               <h3 className="text-lg font-semibold text-background">Nuestros Servicios</h3>
-              <ul className="mt-4 space-y-2">
-                <li><motion.div whileHover={itemHover}><Link href="/servicios#seo" className="text-sm hover:text-background transition-colors">Posicionamiento Web (SEO)</Link></motion.div></li>
-                <li><motion.div whileHover={itemHover}><Link href="/servicios#tools" className="text-sm hover:text-background transition-colors">Herramientas a Medida</Link></motion.div></li>
-                <li><motion.div whileHover={itemHover}><Link href="/servicios#consulting" className="text-sm hover:text-background transition-colors">Consultoría Digital</Link></motion.div></li>
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/servicios#seo" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <Target className="h-4 w-4 text-secondary" />
+                      <span>Posicionamiento Web (SEO)</span>
+                    </Link>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/servicios#tools" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <Wrench className="h-4 w-4 text-secondary" />
+                      <span>Herramientas a Medida</span>
+                    </Link>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div whileHover={itemHover}>
+                    <Link href="/servicios#consulting" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
+                      <Lightbulb className="h-4 w-4 text-secondary" />
+                      <span>Consultoría Digital</span>
+                    </Link>
+                  </motion.div>
+                </li>
               </ul>
             </div>
 
