@@ -17,8 +17,8 @@ const roboto = Roboto({
 
 const siteConfig = {
   name: "Mapre Digital",
-  url: "https://mapredigital.com", // Asegúrate de que este sea tu dominio real
-  ogImage: "https://placehold.co/1200x630.png", // Reemplaza con tu imagen OG definitiva
+  url: "https://mapredigital.netlify.app/", // Asegúrate de que este sea tu dominio real
+  ogImage: "https://mapredigital.netlify.app/FotoPerfilMatias.webp", // Reemplaza con tu imagen OG definitiva
   description: "Transformamos tu presencia online con estrategias a medida, desde posicionamiento web hasta el desarrollo de herramientas que optimizan tu crecimiento.",
   author: "Mapre Digital"
 };
