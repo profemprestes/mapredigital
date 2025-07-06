@@ -6,17 +6,17 @@ import { motion } from 'framer-motion';
 
 const services = [
     {
-      icon: <Target className="h-12 w-12 text-primary" />,
+      icon: <Target className="h-12 w-12 text-primary" aria-hidden="true" />,
       title: "Posicionamiento Web",
       description: "Aumentamos tu visibilidad en buscadores para atraer más clientes potenciales y superar a tu competencia.",
     },
     {
-      icon: <Code className="h-12 w-12 text-primary" />,
+      icon: <Code className="h-12 w-12 text-primary" aria-hidden="true" />,
       title: "Desarrollo de Herramientas Online",
       description: "Creamos soluciones a medida, desde calculadoras interactivas hasta CRMs, para optimizar tus procesos.",
     },
     {
-      icon: <MessageCircle className="h-12 w-12 text-primary" />,
+      icon: <MessageCircle className="h-12 w-12 text-primary" aria-hidden="true" />,
       title: "Consultoría Digital",
       description: "Te guiamos con estrategias efectivas para asegurar que cada paso en el mundo digital sea un éxito.",
     },

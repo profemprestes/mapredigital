@@ -82,7 +82,7 @@ export function TestimonialsSection() {
                 >
                   <Card className="h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-2 border bg-card">
                     <CardContent className="p-8 relative">
-                      <Quote className="absolute top-4 right-4 h-12 w-12 text-primary/10" />
+                      <Quote className="absolute top-4 right-4 h-12 w-12 text-primary/10" aria-hidden="true" />
                       <div className="flex items-center gap-4 mb-6">
                          <Image
                           src={testimonial.logo}

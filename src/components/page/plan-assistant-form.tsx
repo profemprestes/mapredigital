@@ -27,7 +27,7 @@ function SubmitButton() {
   const { pending } = useFormStatus()
   return (
     <Button type="submit" disabled={pending} size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" /> : null}
       {pending ? 'Generando...' : 'Obtener Recomendación'}
     </Button>
   )
@@ -107,7 +107,7 @@ export function PlanAssistantForm() {
           <Card className="w-full h-full animate-fade-in shadow-lg border-2 border-accent rounded-xl bg-accent/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                <Rocket className="text-accent" />
+                <Rocket className="text-accent" aria-hidden="true" />
                 Tu Plan Recomendado
               </CardTitle>
               <CardDescription className="font-semibold text-lg text-primary">{state.data.recommendedPlan}</CardDescription>
@@ -117,7 +117,7 @@ export function PlanAssistantForm() {
                   <h4 className="font-semibold text-foreground">{state.data.planDescription}</h4>
                </div>
               <div>
-                <h4 className="font-semibold flex items-center gap-2 mb-2 text-foreground"><Lightbulb className="text-primary"/>Razones:</h4>
+                <h4 className="font-semibold flex items-center gap-2 mb-2 text-foreground"><Lightbulb className="text-primary" aria-hidden="true" />Razones:</h4>
                 <p className="text-muted-foreground whitespace-pre-wrap">{state.data.reasons}</p>
               </div>
             </CardContent>
@@ -126,7 +126,7 @@ export function PlanAssistantForm() {
         ) : (
           <Card className="w-full border-dashed flex flex-col items-center justify-center text-center p-8 h-full bg-secondary/50 rounded-xl">
             <div className="mb-4 rounded-full bg-background p-4 shadow-inner">
-              <Lightbulb className="h-10 w-10 text-primary" />
+              <Lightbulb className="h-10 w-10 text-primary" aria-hidden="true" />
             </div>
             <h3 className="text-xl font-semibold text-foreground">Tu recomendación aparecerá aquí</h3>
             <p className="text-muted-foreground mt-2">Nuestro asistente inteligente está listo para ayudarte a encontrar el plan perfecto.</p>

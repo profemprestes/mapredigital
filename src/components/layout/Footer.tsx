@@ -91,7 +91,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Home className="h-4 w-4 text-secondary" />
+                      <Home className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Inicio</span>
                     </Link>
                   </motion.div>
@@ -99,7 +99,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <LayoutGrid className="h-4 w-4 text-secondary" />
+                      <LayoutGrid className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Servicios</span>
                     </Link>
                   </motion.div>
@@ -107,7 +107,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/nosotros" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Users className="h-4 w-4 text-secondary" />
+                      <Users className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Nosotros</span>
                     </Link>
                   </motion.div>
@@ -115,7 +115,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/contacto" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <MessageSquare className="h-4 w-4 text-secondary" />
+                      <MessageSquare className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Contacto</span>
                     </Link>
                   </motion.div>
@@ -130,7 +130,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#seo" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Target className="h-4 w-4 text-secondary" />
+                      <Target className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Posicionamiento Web (SEO)</span>
                     </Link>
                   </motion.div>
@@ -138,7 +138,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#tools" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Wrench className="h-4 w-4 text-secondary" />
+                      <Wrench className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Herramientas a Medida</span>
                     </Link>
                   </motion.div>
@@ -146,7 +146,7 @@ export function Footer() {
                 <li>
                   <motion.div whileHover={itemHover}>
                     <Link href="/servicios#consulting" className="flex items-center gap-2 text-sm hover:text-background transition-colors">
-                      <Lightbulb className="h-4 w-4 text-secondary" />
+                      <Lightbulb className="h-4 w-4 text-secondary" aria-hidden="true" />
                       <span>Consultoría Digital</span>
                     </Link>
                   </motion.div>
@@ -159,28 +159,28 @@ export function Footer() {
               <h3 className="text-lg font-semibold text-background">Contacto</h3>
               <ul className="mt-4 space-y-3">
                 <li className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-secondary" />
+                  <Mail className="h-5 w-5 text-secondary" aria-hidden="true" />
                   <motion.a whileHover={itemHover} href="mailto:profematiasprestes@gmail.com" className="text-sm hover:text-background transition-colors">profematiasprestes@gmail.com</motion.a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-secondary" />
+                  <Phone className="h-5 w-5 text-secondary" aria-hidden="true" />
                   <motion.a whileHover={itemHover} href="tel:+59897338241" className="text-sm hover:text-background transition-colors">+598 097 338 241</motion.a>
                 </li>
               </ul>
               <div className="mt-6 flex space-x-2">
                 <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
                   <Link href="https://www.facebook.com/MAPREUY" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Facebook className="h-5 w-5" />
+                    <Facebook className="h-5 w-5" aria-hidden="true" />
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
                   <Link href="https://www.instagram.com/mapreuy/" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Instagram className="h-5 w-5" />
+                    <Instagram className="h-5 w-5" aria-hidden="true" />
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
                   <Link href="#" aria-label="Twitter" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
-                    <Twitter className="h-5 w-5" />
+                    <Twitter className="h-5 w-5" aria-hidden="true" />
                   </Link>
                 </motion.div>
               </div>
@@ -207,7 +207,7 @@ export function Footer() {
               className="rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90"
               aria-label="Volver arriba"
             >
-              <ArrowUp className="h-6 w-6" />
+              <ArrowUp className="h-6 w-6" aria-hidden="true" />
             </Button>
           </motion.div>
       </div>

@@ -6,17 +6,17 @@ import { motion } from 'framer-motion';
 
 const values = [
     {
-      icon: <Gem className="h-10 w-10 text-primary" />,
+      icon: <Gem className="h-10 w-10 text-primary" aria-hidden="true" />,
       title: "Innovación Constante",
       description: "Buscamos y aplicamos las últimas tecnologías y estrategias para mantener a nuestros clientes a la vanguardia.",
     },
     {
-      icon: <Handshake className="h-10 w-10 text-primary" />,
+      icon: <Handshake className="h-10 w-10 text-primary" aria-hidden="true" />,
       title: "Compromiso Absoluto",
       description: "El éxito de nuestros clientes es nuestro éxito. Nos implicamos en cada proyecto como si fuera nuestro.",
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-primary" />,
+      icon: <Lightbulb className="h-10 w-10 text-primary" aria-hidden="true" />,
       title: "Transparencia Radical",
       description: "Comunicación clara, reportes honestos y una colaboración basada en la confianza mútua.",
     },

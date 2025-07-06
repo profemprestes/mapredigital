@@ -15,7 +15,7 @@ const services = [
       'Creación de Contenido Optimizado para SEO',
       'Reportes de Rendimiento Mensuales y Transparentes',
     ],
-    icon: <Target className="h-24 w-24 text-primary" />,
+    icon: <Target className="h-24 w-24 text-primary" aria-hidden="true" />,
     bgColor: 'bg-secondary/20',
   },
   {
@@ -29,7 +29,7 @@ const services = [
       'Diseño de Interfaz Intuitiva (UI/UX)',
       'Soporte y Mantenimiento Continuo',
     ],
-    icon: <Code className="h-24 w-24 text-primary" />,
+    icon: <Code className="h-24 w-24 text-primary" aria-hidden="true" />,
     bgColor: 'bg-background',
   },
   {
@@ -43,7 +43,7 @@ const services = [
       'Optimización de la Tasa de Conversión (CRO)',
       'Capacitación y Acompañamiento para tu Equipo',
     ],
-    icon: <MessageCircle className="h-24 w-24 text-primary" />,
+    icon: <MessageCircle className="h-24 w-24 text-primary" aria-hidden="true" />,
     bgColor: 'bg-secondary/20',
   },
 ];
@@ -90,7 +90,7 @@ export function DetailedServicesSection() {
               <ul className="mt-4 space-y-4">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
-                    <CheckCircle2 className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <CheckCircle2 className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}

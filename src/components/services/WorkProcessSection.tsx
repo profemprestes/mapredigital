@@ -8,25 +8,25 @@ const processSteps = [
     step: 1,
     title: 'Descubrimiento y Análisis',
     description: 'Investigamos tu negocio, mercado y competencia para entender tus desafíos y oportunidades.',
-    icon: <Search className="h-8 w-8 text-primary-foreground" />,
+    icon: <Search className="h-8 w-8 text-primary-foreground" aria-hidden="true" />,
   },
   {
     step: 2,
     title: 'Estrategia y Planificación',
     description: 'Diseñamos una hoja de ruta a medida con objetivos claros y acciones concretas para alcanzarlos.',
-    icon: <Compass className="h-8 w-8 text-primary-foreground" />,
+    icon: <Compass className="h-8 w-8 text-primary-foreground" aria-hidden="true" />,
   },
   {
     step: 3,
     title: 'Implementación y Desarrollo',
     description: 'Ejecutamos la estrategia con las mejores prácticas, desde la optimización SEO hasta el desarrollo de código.',
-    icon: <Code className="h-8 w-8 text-primary-foreground" />,
+    icon: <Code className="h-8 w-8 text-primary-foreground" aria-hidden="true" />,
   },
   {
     step: 4,
     title: 'Medición y Optimización',
     description: 'Monitorizamos los resultados, analizamos los datos y ajustamos la estrategia para una mejora continua.',
-    icon: <TrendingUp className="h-8 w-8 text-primary-foreground" />,
+    icon: <TrendingUp className="h-8 w-8 text-primary-foreground" aria-hidden="true" />,
   },
 ];
 

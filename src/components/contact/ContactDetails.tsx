@@ -3,18 +3,18 @@ import { Mail, Globe, Clock } from 'lucide-react';
 export function ContactDetails() {
     const contactItems = [
     {
-      icon: <Mail className="h-8 w-8 text-primary" />,
+      icon: <Mail className="h-8 w-8 text-primary" aria-hidden="true" />,
       title: "Email",
       info: "profematiasprestes@gmail.com",
       href: "mailto:profematiasprestes@gmail.com",
     },
     {
-      icon: <Globe className="h-8 w-8 text-primary" />,
+      icon: <Globe className="h-8 w-8 text-primary" aria-hidden="true" />,
       title: "Ubicación",
       info: "Servicio global desde Uruguay",
     },
     {
-      icon: <Clock className="h-8 w-8 text-primary" />,
+      icon: <Clock className="h-8 w-8 text-primary" aria-hidden="true" />,
       title: "Horario",
       info: "Lunes a Viernes, 9:00 - 18:00 (UTC-3)",
     }

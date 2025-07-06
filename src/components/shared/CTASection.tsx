@@ -30,7 +30,7 @@ export function CTASection() {
           >
             <Link href="/contacto">
               Contáctanos y empecemos
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Link>
           </Button>
         </div>
