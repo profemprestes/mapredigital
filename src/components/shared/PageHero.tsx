@@ -50,7 +50,7 @@ export function PageHero({ title, subtitle }: PageHeroProps) {
               {title}
             </motion.h1>
             <motion.p 
-              className="mx-auto mt-6 max-w-3xl text-lg text-slate-300 md:text-xl"
+              className="mx-auto mt-6 max-w-3xl text-lg text-secondary md:text-xl"
               variants={itemVariants}
             >
               {subtitle}

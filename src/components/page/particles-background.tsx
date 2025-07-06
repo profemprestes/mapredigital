@@ -28,7 +28,7 @@ export function ParticlesBackground() {
     () => ({
       background: {
         color: {
-          value: 'hsl(220, 20%, 98%)',
+          value: 'transparent',
         },
       },
       fpsLimit: 60,
@@ -48,10 +48,10 @@ export function ParticlesBackground() {
       },
       particles: {
         color: {
-          value: ['hsl(217, 91%, 60%)', 'hsl(350, 90%, 60%)'],
+          value: ['#457b9d', '#e63946'],
         },
         links: {
-          color: 'hsl(220, 13%, 75%)',
+          color: '#a8dadc',
           distance: 150,
           enable: true,
           opacity: 0.5,
