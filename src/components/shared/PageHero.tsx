@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ParticlesBackground } from '@/components/page/particles-background';
+import { cn } from '@/lib/utils';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,11 +30,12 @@ const itemVariants = {
 interface PageHeroProps {
     title: string;
     subtitle: string;
+    className?: string;
 }
 
-export function PageHero({ title, subtitle }: PageHeroProps) {
+export function PageHero({ title, subtitle, className }: PageHeroProps) {
     return (
-        <section className="relative bg-foreground py-24 md:py-32 overflow-hidden">
+        <section className={cn("relative bg-foreground py-24 md:py-32 overflow-hidden", className)}>
              <div className="absolute inset-0 -z-10 opacity-30">
                 <ParticlesBackground />
             </div>

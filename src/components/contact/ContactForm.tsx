@@ -154,7 +154,7 @@ export function ContactForm() {
           )}
         />
         
-        <Button type="submit" disabled={isSubmitting} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
+        <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105" size="lg">
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Enviar Mensaje
         </Button>
