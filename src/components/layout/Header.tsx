@@ -24,7 +24,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => isSheetOpen && setIsSheetOpen(false)}>
           <Image
-            src="https://placehold.co/140x40.png"
+            src="/assets/logo_mapre.jpg"
             alt="Mapre Digital Logo"
             width={140}
             height={40}
@@ -53,7 +53,7 @@ export function Header() {
         <div className="flex items-center gap-4">
             {/* Desktop CTA */}
             <div className="hidden lg:block">
-              <Button asChild>
+              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="/contacto">Solicitar Asesoría</Link>
               </Button>
             </div>
@@ -72,7 +72,7 @@ export function Header() {
                         <SheetTitle>
                             <Link href="/" className="flex items-center" onClick={() => setIsSheetOpen(false)}>
                             <Image
-                                src="https://placehold.co/140x40.png"
+                                src="/assets/logo_mapre.jpg"
                                 alt="Mapre Digital Logo"
                                 width={140}
                                 height={40}
@@ -97,7 +97,7 @@ export function Header() {
                       ))}
                     </ul>
                     <div className="mt-auto pb-8">
-                       <Button asChild size="lg" className="w-full">
+                       <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                         <Link href="/contacto" onClick={() => setIsSheetOpen(false)}>Solicitar Asesoría</Link>
                       </Button>
                     </div>

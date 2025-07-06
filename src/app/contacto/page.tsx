@@ -1,10 +1,16 @@
-
+'use client'
 import { ContactForm } from '@/components/contact/ContactForm';
 import { ContactDetails } from '@/components/contact/ContactDetails';
+import { motion } from 'framer-motion';
 
 export default function ContactoPage() {
   return (
-    <div className="bg-background">
+    <motion.div 
+      className="bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="mb-12 text-center">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -15,14 +21,24 @@ export default function ContactoPage() {
           </p>
         </div>
         <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-24">
-          <div className="rounded-xl bg-card p-8 shadow-lg border">
+          <motion.div 
+            className="rounded-xl bg-card p-8 shadow-lg border"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+          >
             <ContactForm />
-          </div>
-          <div className="mt-8 lg:mt-0">
+          </motion.div>
+          <motion.div 
+            className="mt-8 lg:mt-0"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+          >
             <ContactDetails />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

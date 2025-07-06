@@ -12,7 +12,7 @@ export function PlanAssistantSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">¿No sabes qué plan elegir?</h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -24,7 +24,7 @@ export function PlanAssistantSection() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
             >
               <PlanAssistantForm />
             </motion.div>

@@ -17,6 +17,7 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Rocket, Lightbulb, Loader2 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const initialState: FormState = {
   message: '',
@@ -37,7 +38,7 @@ export function PlanAssistantForm() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <Card className="shadow-lg border-none rounded-xl">
+      <Card className="shadow-lg border-none rounded-xl bg-card/60 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="font-headline text-2xl">Describe tu proyecto</CardTitle>
           <CardDescription>Completa el formulario para recibir una sugerencia de plan personalizada por nuestra IA.</CardDescription>
@@ -97,13 +98,19 @@ export function PlanAssistantForm() {
       
       <div className="flex items-center justify-center">
         {state.data ? (
-          <Card className="w-full animate-fade-in shadow-lg border-2 border-accent rounded-xl bg-accent/5">
+           <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="w-full h-full"
+          >
+          <Card className="w-full h-full animate-fade-in shadow-lg border-2 border-accent rounded-xl bg-accent/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                 <Rocket className="text-accent" />
                 Tu Plan Recomendado
               </CardTitle>
-              <CardDescription className="font-semibold text-lg text-foreground">{state.data.recommendedPlan}</CardDescription>
+              <CardDescription className="font-semibold text-lg text-primary">{state.data.recommendedPlan}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                <div>
@@ -115,6 +122,7 @@ export function PlanAssistantForm() {
               </div>
             </CardContent>
           </Card>
+          </motion.div>
         ) : (
           <Card className="w-full border-dashed flex flex-col items-center justify-center text-center p-8 h-full bg-secondary/50 rounded-xl">
             <div className="mb-4 rounded-full bg-background p-4 shadow-inner">

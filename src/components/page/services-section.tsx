@@ -22,17 +22,24 @@ const services = [
     },
 ];
 
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+  },
+};
+
 const cardVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: (i: number) => ({
+  hidden: { y: 40, opacity: 0 },
+  visible: {
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.2,
-      duration: 0.5,
-      ease: 'easeOut',
+      duration: 0.6,
+      ease: [0.6, 0.05, -0.01, 0.9],
     },
-  }),
+  },
 };
 
 export function ServicesSection() {
@@ -44,24 +51,26 @@ export function ServicesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <h2 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">Nuestros Servicios</h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Soluciones diseñadas para potenciar tu éxito en el mundo digital.
               </p>
             </motion.div>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <motion.div 
+              className="mt-12 grid gap-8 md:grid-cols-3"
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  custom={index}
                   variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
                 >
-                  <Card className="h-full text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
+                  <Card className="h-full text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-transparent hover:border-primary bg-card/50">
                     <CardHeader className="items-center">
                       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                         {service.icon}
@@ -74,7 +83,7 @@ export function ServicesSection() {
                   </Card>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
     );

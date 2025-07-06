@@ -3,35 +3,39 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ParticlesBackground } from './particles-background';
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.6,
-      ease: 'easeOut',
+      duration: 0.8,
+      ease: [0.6, 0.05, -0.01, 0.9],
     },
   },
 };
 
 export function HeroSection() {
     return (
-        <section className="py-24 md:py-32 bg-white">
+        <section className="relative py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <ParticlesBackground />
+          </div>
           <motion.div 
-            className="container text-center"
+            className="container text-center relative z-10"
             variants={containerVariants}
             initial="hidden"
             animate="visible"

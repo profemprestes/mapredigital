@@ -5,14 +5,14 @@ import { Mail, Phone, Linkedin, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="bg-foreground text-slate-300">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Logo & Description */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="https://placehold.co/150x40.png"
+                src="/assets/logo_mapre.jpg"
                 alt="Mapre Digital Logo"
                 width={150}
                 height={40}
