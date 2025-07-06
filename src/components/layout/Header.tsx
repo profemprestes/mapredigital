@@ -26,7 +26,7 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
   return (
     <header className="sticky top-0 z-50 w-full bg-foreground text-background shadow-lg">
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/Portada_MAFRE.svg"
             alt="Mapre Digital Logo"
@@ -36,6 +36,10 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
             priority={isHomePage}
             data-ai-hint="company logo white"
           />
+           <div>
+              <p className="font-headline font-bold text-lg leading-tight">Mapre Digital</p>
+              <p className="hidden md:block text-xs text-background/80 leading-tight">Impulsamos tu Negocio al Siguiente Nivel Digital</p>
+          </div>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-2">
@@ -91,7 +95,7 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
                 <SheetHeader className="p-4 border-b">
                   <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
-                  <Link href="/" className="flex flex-col items-center text-center" onClick={() => setIsSheetOpen(false)}>
+                  <Link href="/" className="flex items-center justify-center text-center" onClick={() => setIsSheetOpen(false)}>
                     <Image
                       src="/Portada_MAFRE.svg"
                       alt="Mapre Digital Logo"
@@ -100,10 +104,6 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
                       className="h-auto w-auto"
                       data-ai-hint="company logo"
                     />
-                    <div className="mt-2">
-                        <p className="font-headline text-lg font-bold text-foreground">Mapre Digital</p>
-                        <p className="text-xs text-muted-foreground">Impulsamos tu Negocio al Siguiente Nivel Digital</p>
-                    </div>
                   </Link>
                 </SheetHeader>
                 <div className="flex-1 flex flex-col p-4 overflow-y-auto">
