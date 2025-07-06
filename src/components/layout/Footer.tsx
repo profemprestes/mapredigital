@@ -104,28 +104,28 @@ export function Footer() {
                   <motion.a whileHover={itemHover} href="tel:+34123456789" className="text-sm hover:text-background transition-colors">+34 123 456 789</motion.a>
                 </li>
               </ul>
-              <div className="mt-6 flex space-x-4">
-                <motion.div whileHover={itemHover}>
-                  <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-background transition-colors">
-                    <Linkedin className="h-6 w-6" />
+              <div className="mt-6 flex space-x-2">
+                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                  <Link href="#" aria-label="LinkedIn" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                    <Linkedin className="h-5 w-5" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={itemHover}>
-                  <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-background transition-colors">
-                    <Instagram className="h-6 w-6" />
+                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                  <Link href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                    <Instagram className="h-5 w-5" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={itemHover}>
-                  <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-background transition-colors">
-                    <Twitter className="h-6 w-6" />
+                <motion.div whileHover={{ scale: 1.1, y: -2 }} transition={{ type: 'spring', stiffness: 300 }}>
+                  <Link href="#" aria-label="Twitter" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-background/80 transition-colors hover:bg-primary/40 hover:text-background">
+                    <Twitter className="h-5 w-5" />
                   </Link>
                 </motion.div>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 border-t border-primary pt-8 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-16 border-t border-primary/40 pt-8 text-center">
+            <p className="text-sm text-background/70">
               © {new Date().getFullYear()} Mapre Digital. Todos los derechos reservados.
             </p>
           </div>
