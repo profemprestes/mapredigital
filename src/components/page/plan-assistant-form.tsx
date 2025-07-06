@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { getPlanSuggestion, type FormState } from '@/app/actions'
@@ -24,7 +25,7 @@ const initialState: FormState = {
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" disabled={pending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+    <Button type="submit" disabled={pending} size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg">
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
       {pending ? 'Generando...' : 'Obtener Recomendación'}
     </Button>
@@ -36,9 +37,9 @@ export function PlanAssistantForm() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <Card className="shadow-lg">
+      <Card className="shadow-lg border-none rounded-xl">
         <CardHeader>
-          <CardTitle className="font-headline">Describe tu proyecto</CardTitle>
+          <CardTitle className="font-headline text-2xl">Describe tu proyecto</CardTitle>
           <CardDescription>Completa el formulario para recibir una sugerencia de plan personalizada por nuestra IA.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -53,6 +54,7 @@ export function PlanAssistantForm() {
                 rows={5}
                 defaultValue={state.fields?.businessNeeds}
                 aria-invalid={!!state.issues?.find(issue => issue.includes('necesidades'))}
+                className="focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <div className="space-y-2">
@@ -64,12 +66,13 @@ export function PlanAssistantForm() {
                 required
                 defaultValue={state.fields?.budget}
                 aria-invalid={!!state.issues?.find(issue => issue.includes('presupuesto'))}
+                className="focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="technicalExpertise">Nivel de experiencia técnica</Label>
               <Select name="technicalExpertise" required defaultValue={state.fields?.technicalExpertise}>
-                <SelectTrigger id="technicalExpertise" aria-invalid={!!state.issues?.find(issue => issue.includes('experiencia'))}>
+                <SelectTrigger id="technicalExpertise" aria-invalid={!!state.issues?.find(issue => issue.includes('experiencia'))} className="focus:ring-2 focus:ring-primary/50">
                   <SelectValue placeholder="Selecciona tu nivel" />
                 </SelectTrigger>
                 <SelectContent>
@@ -94,25 +97,28 @@ export function PlanAssistantForm() {
       
       <div className="flex items-center justify-center">
         {state.data ? (
-          <Card className="w-full animate-fade-in shadow-lg border-accent">
+          <Card className="w-full animate-fade-in shadow-lg border-2 border-accent rounded-xl bg-accent/5">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 font-headline">
+              <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                 <Rocket className="text-accent" />
-                Tu Plan Recomendado: {state.data.recommendedPlan}
+                Tu Plan Recomendado
               </CardTitle>
-              <CardDescription>{state.data.planDescription}</CardDescription>
+              <CardDescription className="font-semibold text-lg text-foreground">{state.data.recommendedPlan}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+               <div>
+                  <h4 className="font-semibold text-foreground">{state.data.planDescription}</h4>
+               </div>
               <div>
-                <h4 className="font-semibold flex items-center gap-2 mb-2"><Lightbulb className="text-primary-foreground/80"/>Razones:</h4>
+                <h4 className="font-semibold flex items-center gap-2 mb-2 text-foreground"><Lightbulb className="text-primary"/>Razones:</h4>
                 <p className="text-muted-foreground whitespace-pre-wrap">{state.data.reasons}</p>
               </div>
             </CardContent>
           </Card>
         ) : (
-          <Card className="w-full border-dashed flex flex-col items-center justify-center text-center p-8 h-full bg-secondary/50">
-            <div className="mb-4 rounded-full bg-background p-4">
-              <Lightbulb className="h-10 w-10 text-primary-foreground/50" />
+          <Card className="w-full border-dashed flex flex-col items-center justify-center text-center p-8 h-full bg-secondary/50 rounded-xl">
+            <div className="mb-4 rounded-full bg-background p-4 shadow-inner">
+              <Lightbulb className="h-10 w-10 text-primary" />
             </div>
             <h3 className="text-xl font-semibold text-foreground">Tu recomendación aparecerá aquí</h3>
             <p className="text-muted-foreground mt-2">Nuestro asistente inteligente está listo para ayudarte a encontrar el plan perfecto.</p>
