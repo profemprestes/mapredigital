@@ -113,3 +113,15 @@ export async function getPostById(id: string) {
   }
   return post
 }
+
+// Get Latest Posts (for homepage section)
+export async function getLatestPosts(limit: number = 3) {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    take: limit,
+  });
+  return posts;
+}

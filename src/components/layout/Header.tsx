@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Home, Briefcase, Users, Mail, Menu, X } from 'lucide-react';
+import { Home, Briefcase, Users, Mail, Menu, X, Newspaper } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/', label: 'Inicio', icon: Home },
   { href: '/servicios', label: 'Servicios', icon: Briefcase },
   { href: '/nosotros', label: 'Nosotros', icon: Users },
+  { href: '/noticias', label: 'Noticias', icon: Newspaper },
   { href: '/contacto', label: 'Contacto', icon: Mail },
 ];
 
@@ -95,15 +96,19 @@ export function Header({ isHomePage }: { isHomePage: boolean }) {
               <SheetContent side="right" className="w-[300px] sm:w-[350px] bg-card p-0 flex flex-col">
                 <SheetHeader className="p-4 border-b">
                   <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
-                  <Link href="/" className="flex items-center justify-center text-center" onClick={() => setIsSheetOpen(false)}>
+                  <Link href="/" className="flex items-center justify-center text-center gap-3" onClick={() => setIsSheetOpen(false)}>
                     <Image
                       src="/Portada_MAFRE.svg"
                       alt="Mapre Digital Logo"
-                      width={140}
+                      width={40}
                       height={40}
-                      className="h-auto w-auto"
+                      className="h-10 w-auto"
                       data-ai-hint="company logo"
                     />
+                     <div>
+                        <p className="font-headline font-bold text-lg leading-tight">Mapre Digital</p>
+                        <p className="text-xs text-foreground/80 leading-tight">Impulsamos tu Negocio al Siguiente Nivel Digital</p>
+                    </div>
                   </Link>
                 </SheetHeader>
                 <div className="flex-1 flex flex-col p-4 overflow-y-auto">

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 // Carga dinámica de los componentes que no son críticos para el LCP
 const ServicesSection = dynamic(() => import('@/components/page/services-section').then(mod => mod.ServicesSection));
 const TestimonialsSection = dynamic(() => import('@/components/page/testimonials-section').then(mod => mod.TestimonialsSection));
-const PlanAssistantSection = dynamic(() => import('@/components/page/plan-assistant-section').then(mod => mod.PlanAssistantSection));
+const NewsSection = dynamic(() => import('@/components/page/news-section').then(mod => mod.NewsSection));
 
 // Carga el nuevo componente de partículas de forma dinámica
 const ClientParticles = dynamic(() =>
@@ -30,7 +30,7 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <TestimonialsSection />
-        <PlanAssistantSection />
+        <NewsSection />
       </main>
     </div>
   );
