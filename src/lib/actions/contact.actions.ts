@@ -42,6 +42,7 @@ export async function createContactMessage(
   }
 
   try {
+    if (!prisma) throw new Error('Database connection not available.')
     await prisma.contactMessage.create({
       data: parsed.data,
     })
@@ -56,6 +57,7 @@ export async function createContactMessage(
 
 export async function getAllMessages() {
   try {
+    if (!prisma) return []
     const messages = await prisma.contactMessage.findMany({
       orderBy: {
         createdAt: 'desc',
@@ -69,6 +71,7 @@ export async function getAllMessages() {
 }
 
 export async function toggleReadStatus(id: string) {
+    if (!prisma) return
     const message = await prisma.contactMessage.findUnique({ where: { id } });
     if (!message) throw new Error('Message not found');
 
@@ -80,6 +83,7 @@ export async function toggleReadStatus(id: string) {
 }
 
 export async function deleteMessage(id: string) {
+    if (!prisma) return
     await prisma.contactMessage.delete({ where: { id } });
     revalidatePath('/admin/mensajes');
 }

@@ -26,6 +26,8 @@ export async function createComment(postId: string, formData: FormData) {
     throw new Error('Post ID is required.')
   }
 
+  if (!prisma) throw new Error('Database connection not available.')
+
   await prisma.comment.create({
     data: {
       content,
@@ -42,7 +44,7 @@ export async function createComment(postId: string, formData: FormData) {
 }
 
 export async function getCommentsByPostId(postId: string) {
-  if (!postId) {
+  if (!postId || !prisma) {
     return []
   }
 
