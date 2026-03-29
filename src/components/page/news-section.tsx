@@ -5,10 +5,15 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export async function NewsSection() {
-  const latestPosts = await getLatestPosts(3);
+  let latestPosts: any[] = [];
+  try {
+    latestPosts = await getLatestPosts(3);
+  } catch (error) {
+    console.warn('Could not fetch latest posts for news section. Skipping section.', error);
+  }
 
-  if (latestPosts.length === 0) {
-    return null; // Don't render the section if there are no posts
+  if (!latestPosts || latestPosts.length === 0) {
+    return null; // Don't render the section if there are no posts or if DB failed
   }
 
   return (
