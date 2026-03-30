@@ -1,0 +1,107 @@
+{
+  "brand_system": {
+    "identity": {
+      "name": "Mapre Digital",
+      "slogan": "Impulsamos tu Negocio al Siguiente Nivel Digital",
+      "industry": "Agencia de Consultoría Digital, Posicionamiento SEO y Desarrollo Web B2B",
+      "mission": "Transformar la manera en que las empresas interactúan con el mundo online a través de tecnología a medida y estrategias basadas en la transparencia y los resultados.",
+      "personality": ["Innovadora", "Transparente", "Efectiva"],
+      "target_audience": "Dueños de negocios tradicionales y empresas (B2B) en Uruguay y globalmente, que buscan automatizar sus procesos y crecer digitalmente."
+    },
+    "visual_guidelines": {
+      "style": "Clean UI, Minimalista, Tecnológico, Glassmorphism suave, Corporate B2B, Vector Art, 3D Isometric Clay",
+      "tone": "Profesional, futurista pero accesible, estructurado, que inspire confianza absoluta",
+      "colors": [
+        {
+          "role": "Background",
+          "name": "Blanco Humo",
+          "hex": "#F9F9F9",
+          "usage": "Fondos de pantalla limpios, espacio negativo, base para tarjetas (cards)."
+        },
+        {
+          "role": "Foreground (Dark Mode Base)",
+          "name": "Azul Marino Oscuro",
+          "hex": "#1D3B58",
+          "usage": "Textos principales, logotipos sobre fondos claros, y color dominante en Hero Banners o Dark Mode UI."
+        },
+        {
+          "role": "Primary (Accent Tech)",
+          "name": "Celeste Pastel",
+          "hex": "#ADD8E6",
+          "usage": "Botones, líneas de conexión digital, redes, luces abstractas y destellos."
+        },
+        {
+          "role": "Secondary Accent",
+          "name": "Rojo Vivo",
+          "hex": "#FF4136",
+          "usage": "Solo para detalles vibrantes muy puntuales, llamadas a la acción críticas o alertas."
+        }
+      ]
+    },
+    "ai_agent_instructions": {
+      "role": "Director de Arte AI y Consultor de Branding B2B",
+      "objective": "Generar prompts exactos y paramétricos para IAs de imágenes (Midjourney, DALL-E) que respeten estrictamente la paleta de colores y el manual de estilo de Mapre Digital.",
+      "rules": [
+        "NUNCA salgas del personaje: Eres profesional y te enfocas en UX/UI y diseño corporativo.",
+        "Siempre que el usuario pida una imagen, NUNCA respondas con descripciones generales; entrega un prompt formateado listo para copiar.",
+        "TODOS los prompts DEBEN incluir explícitamente los colores hexadecimales (#1D3B58, #ADD8E6, #F9F9F9, #FF4136) de la marca.",
+        "Asegúrate de pedir estilos específicos como 'Clean UI', 'Flat vector design', o '3D Isometric clay render'. Nunca estilos caricaturescos.",
+        "Si la petición es ambigua, pregunta por el formato (ej. 1:1, 16:9) antes de entregar el prompt final."
+      ]
+    },
+    "prompts_library": [
+      {
+        "category": "Logo & Favicon",
+        "assets": [
+          {
+            "type": "Imagotipo Principal",
+            "prompt": "Diseña un logotipo principal moderno, tecnológico y minimalista para una agencia de desarrollo web y posicionamiento SEO llamada 'Mapre Digital'. El diseño debe ser un imagotipo (símbolo a la izquierda y texto a la derecha). El símbolo debe evocar crecimiento digital o conexiones (nodos, flechas ascendentes o una 'M' moderna). Usa Azul Marino Profundo (#1D3B58) para el texto y formas principales, y un gradiente sutil en Celeste Claro (#ADD8E6). Fondo blanco puro (#FFFFFF). Estilo visual: Flat vector design, limpio, flat logo corporativo, Dribbble style."
+          },
+          {
+            "type": "Favicon (App Icon)",
+            "prompt": "Crea un 'Favicon' cuadrado perfecto (sin texto) para la marca 'Mapre Digital', una agencia tech de software y SEO. Debe ser audaz y geométrico para verse bien en tamaños mínimos. Fondo transparente o blanco (#FFFFFF). El icono debe combinar Azul Marino Oscuro (#1D3B58) y detalles en Celeste Brillante (#ADD8E6), con un pequeño acento en Rojo Vivo (#FF4136). Estilo visual: Minimalist app icon, flat vector logo, clean geometry. --ar 1:1"
+          }
+        ]
+      },
+      {
+        "category": "Web Assets",
+        "assets": [
+          {
+            "type": "Hero Section Background",
+            "prompt": "Crea un fondo panorámico abstracto, tecnológico e hiperrealista para la Hero Section de la agencia 'Mapre Digital'. El fondo debe ser predominantemente Azul Marino Profundo (#1D3B58) (Dark Mode UI background). Añade sutiles líneas de conexión digital, redes neuronales o partículas iluminadas en Celeste brillante (#ADD8E6) y algún mínimo destello Rojo Vivo (#FF4136). El lado izquierdo debe ser muy oscuro y vacío (espacio negativo) para superponer un gran titular blanco. Estilo visual: Abstract tech background, glassmorphism UI, sleek corporate tech. --ar 16:9 --style raw"
+          },
+          {
+            "type": "3D Isometric Service Card (SEO)",
+            "prompt": "Genera una ilustración 3D isométrica minimalista ('Clay render' o '3D UI Icon') para representar el servicio de 'Posicionamiento Web SEO'. Escena: un cohete despegando de un gráfico de barras ascendente envuelto por una lupa. Fondo: Gris muy claro / Blanco Humo (#F9F9F9). Elementos 3D en Azul Marino (#1D3B58) y Celeste (#ADD8E6), con detalles clave (el fuego o barra más alta) en Rojo Vivo (#FF4136). Estilo: Modern 3D isometric illustration, soft clean lighting, high-end corporate. --ar 1:1"
+          }
+        ]
+      },
+      {
+        "category": "Social Media",
+        "assets": [
+          {
+            "type": "Instagram / Testimonials Background",
+            "prompt": "Diseña una plantilla de fondo vacía para un post corporativo (B2B tech) de la agencia 'Mapre Digital'. El fondo principal debe ser Gris muy claro / Blanco Humo (#F9F9F9). En la esquina superior izquierda e inferior derecha añade formas fluidas o capas abstractas en Azul Marino (#1D3B58) y Celeste (#ADD8E6). Deja un inmenso espacio libre en el centro para colocar texto después. Añade un leve acento sutil en Rojo Vivo (#FF4136). Estilo: Clean UI design background, corporate tech template, flat vector. --ar 1:1"
+          },
+          {
+            "type": "LinkedIn Cover Banner",
+            "prompt": "Genera una imagen de portada (cover photo) para LinkedIn de la agencia de software y SEO 'Mapre Digital'. La composición debe tener Azul Marino Oscuro (#1D3B58) como predominante. En la mitad derecha, integra ondas tecnológicas u una matriz de puntos en Celeste Brillante (#ADD8E6). La mitad izquierda debe ser un degradado limpio y oscuro como espacio negativo para insertar el logo después. Estilo: Professional B2B tech banner, sleek dark mode background, abstract tech connections. --ar 21:9"
+          }
+        ]
+      },
+      {
+        "category": "Corporate Identity",
+        "assets": [
+          {
+            "type": "Email Signature Mockup",
+            "prompt": "Diseña el concepto visual para una firma de correo electrónico corporativo moderna de la agencia 'Mapre Digital' (disposición banner horizontal estrecho). Izquierda: espacio circular para foto. Centro: diseño limpio sobre fondo Blanco (#F9F9F9) con divisores sutiles en Azul Marino (#1D3B58). Derecha: bloque gráfico para iconos sociales en Celeste (#ADD8E6) y acento Rojo Vivo (#FF4136). Estilo: Clean UI, sleek professional email signature mockup, flat vector, B2B tech. --ar 21:5"
+          },
+          {
+            "type": "A4 Report Cover",
+            "prompt": "Diseña la portada en formato A4 para un documento corporativo (Reporte de Auditoría SEO) de la agencia 'Mapre Digital'. La mitad superior debe tener fondo Blanco/Gris claro (#F9F9F9) dejando mucho espacio libre. La mitad inferior debe incorporar un patrón abstracto tecnológico en Azul Marino (#1D3B58) y Celeste (#ADD8E6). Incluye en una esquina una pequeña pestaña de acento en Rojo Vivo (#FF4136). Estilo: Corporate A4 report cover design template, flat minimalist graphics, modern B2B tech layout. --ar 2:3"
+          }
+        ]
+      }
+    ]
+  }
+}
