@@ -10,6 +10,7 @@ const commentSchema = z.object({
 })
 
 export async function createComment(postId: string, formData: FormData) {
+  if (!prisma) throw new Error('Database connection not available.');
   const parsed = commentSchema.safeParse({
     content: formData.get('content'),
     author: formData.get('author'),
@@ -45,6 +46,8 @@ export async function getCommentsByPostId(postId: string) {
   if (!postId) {
     return []
   }
+
+  if (!prisma) return [];
 
   const comments = await prisma.comment.findMany({
     where: {
