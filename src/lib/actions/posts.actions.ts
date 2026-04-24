@@ -77,33 +77,43 @@ export async function deletePost(id: string) {
 
 // Get All Posts (for admin dashboard and sitemap)
 export async function getAllPosts() {
-  const posts = await prisma.post.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-    include: {
-      _count: {
-        select: { comments: true },
+  try {
+    const posts = await prisma?.post.findMany({
+      orderBy: {
+        createdAt: 'desc',
       },
-    },
-  })
-  return posts
+      include: {
+        _count: {
+          select: { comments: true },
+        },
+      },
+    });
+    return posts || [];
+  } catch (error) {
+    console.error("Error fetching all posts:", error);
+    return [];
+  }
 }
 
 // Get All Published Posts (for public blog)
 export async function getPublishedPosts() {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    include: {
-      _count: {
-        select: { comments: true },
+  try {
+    const posts = await prisma?.post.findMany({
+      where: { published: true },
+      orderBy: {
+        createdAt: 'desc',
       },
-    },
-  })
-  return posts
+      include: {
+        _count: {
+          select: { comments: true },
+        },
+      },
+    });
+    return posts || [];
+  } catch (error) {
+    console.error("Error fetching published posts:", error);
+    return [];
+  }
 }
 
 // Get Post By Slug (for post detail page)
@@ -127,19 +137,24 @@ export async function getPostById(id: string) {
 
 // Get Latest Posts (for homepage section)
 export async function getLatestPosts(limit: number = 3) {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    take: limit,
-    include: {
-      _count: {
-        select: { comments: true },
+  try {
+    const posts = await prisma?.post.findMany({
+      where: { published: true },
+      orderBy: {
+        createdAt: 'desc',
       },
-    },
-  });
-  return posts;
+      take: limit,
+      include: {
+        _count: {
+          select: { comments: true },
+        },
+      },
+    });
+    return posts || [];
+  } catch (error) {
+    console.error("Error fetching latest posts:", error);
+    return [];
+  }
 }
 
 // Enhance Post with AI
