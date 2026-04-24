@@ -10,14 +10,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '/' ? 1 : 0.8,
   }));
 
-  const posts = await getAllPosts();
-  const postRoutes = posts
-    .filter(post => post.published)
-    .map(post => ({
-      url: `${siteUrl}noticias/${post.slug}`,
-      lastModified: post.updatedAt.toISOString(),
-      priority: 0.7
-  }));
+  try {
+    const posts = await getAllPosts();
+    const postRoutes = posts
+      .filter(post => post.published)
+      .map(post => ({
+        url: `${siteUrl}noticias/${post.slug}`,
+        lastModified: post.updatedAt.toISOString(),
+        priority: 0.7
+    }));
 
-  return [...staticRoutes, ...postRoutes];
+    return [...staticRoutes, ...postRoutes];
+  } catch (error) {
+    console.error("Error generating sitemap posts:", error);
+    return staticRoutes;
+  }
 }
