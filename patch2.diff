@@ -1,22 +1,16 @@
-<<<<<<< SEARCH
-type Props = {
-  params: { slug: string };
-};
+--- src/app/noticias/page.tsx
++++ src/app/noticias/page.tsx
+@@ -22,8 +22,13 @@
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
-=======
-type Props = {
-  params: Promise<{ slug: string }>;
-};
+ export default async function NoticiasPage() {
+-  const rawPosts = await getPublishedPosts();
+-  const posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  let posts: any[] = [];
++  try {
++    const rawPosts = await getPublishedPosts();
++    posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  } catch (error) {
++    console.error('Failed to fetch posts:', error);
++  }
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const resolvedParams = await params;
-  const post = await getPostBySlug(resolvedParams.slug);
->>>>>>> REPLACE
+   return (

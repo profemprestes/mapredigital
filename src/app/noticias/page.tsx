@@ -22,8 +22,13 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function NoticiasPage() {
-  const rawPosts = await getPublishedPosts();
-  const posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
+  let posts: any[] = [];
+  try {
+    const rawPosts = await getPublishedPosts();
+    posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+  }
 
   return (
     <>

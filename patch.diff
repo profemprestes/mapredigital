@@ -1,10 +1,17 @@
---- src/app/noticias/[slug]/page.tsx
-+++ src/app/noticias/[slug]/page.tsx
-@@ -32,7 +32,7 @@
-     openGraph: {
-       title: post.title,
-       description: post.content.substring(0, 160),
--      url: `/noticias/${post.slug}`,
-+      url: `/noticias/${resolvedParams.slug}`,
-       images: [post.imageUrl, ...previousImages],
-     },
+--- src/components/page/news-section.tsx
++++ src/components/page/news-section.tsx
+@@ -6,8 +6,13 @@
+
+ export async function NewsSection() {
+-  const rawPosts = await getLatestPosts(3);
+-  const latestPosts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  let latestPosts: any[] = [];
++  try {
++    const rawPosts = await getLatestPosts(3);
++    latestPosts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  } catch (error) {
++    console.error('Failed to fetch latest posts:', error);
++  }
+
+   if (latestPosts.length === 0) {
+     return null; // Don't render the section if there are no posts
