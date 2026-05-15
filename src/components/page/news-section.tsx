@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export async function NewsSection() {
-  const latestPosts = await getLatestPosts(3);
+  const rawPosts = await getLatestPosts(3);
+  const latestPosts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
 
   if (latestPosts.length === 0) {
     return null; // Don't render the section if there are no posts

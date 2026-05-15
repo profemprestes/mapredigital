@@ -1,0 +1,22 @@
+--- src/app/noticias/page.tsx
++++ src/app/noticias/page.tsx
+@@ -29,7 +29,8 @@
+ export const revalidate = 60; // Revalidate every 60 seconds
+
+ export default async function NoticiasPage() {
+-  const posts = await getPublishedPosts();
++  const rawPosts = await getPublishedPosts();
++  const posts = rawPosts.map(p => ({ ...p, _count: p._count || { comments: 0 } }));
+
+   return (
+--- src/components/page/news-section.tsx
++++ src/components/page/news-section.tsx
+@@ -7,7 +7,8 @@
+
+ export async function NewsSection() {
+-  const latestPosts = await getLatestPosts(3);
++  const rawPosts = await getLatestPosts(3);
++  const latestPosts = rawPosts.map(p => ({ ...p, _count: p._count || { comments: 0 } }));
+
+   if (latestPosts.length === 0) {
+     return null; // Don't render the section if there are no posts

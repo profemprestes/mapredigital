@@ -1,0 +1,48 @@
+--- src/app/admin/noticias/[id]/editar/page.tsx
++++ src/app/admin/noticias/[id]/editar/page.tsx
+@@ -4,8 +4,9 @@
+
+-export default async function EditarNoticiaPage({ params }: { params: { id: string } }) {
+-  const post = await getPostById(params.id)
++export default async function EditarNoticiaPage({ params }: { params: Promise<{ id: string }> }) {
++  const resolvedParams = await params;
++  const post = await getPostById(resolvedParams.id)
+
+   if (!post) {
+     notFound()
+--- src/app/noticias/[slug]/page.tsx
++++ src/app/noticias/[slug]/page.tsx
+@@ -9,7 +9,7 @@
+
+ type Props = {
+-  params: { slug: string };
++  params: Promise<{ slug: string }>;
+ };
+
+ export async function generateMetadata(
+@@ -17,7 +17,8 @@
+   parent: ResolvingMetadata
+ ): Promise<Metadata> {
+-  const post = await getPostBySlug(params.slug);
++  const resolvedParams = await params;
++  const post = await getPostBySlug(resolvedParams.slug);
+
+   if (!post) {
+     return {
+@@ -32,7 +33,7 @@
+     openGraph: {
+       title: post.title,
+       description: post.content.substring(0, 160),
+-      url: `/noticias/${post.slug}`,
++      url: `/noticias/${resolvedParams.slug}`,
+       images: [post.imageUrl, ...previousImages],
+     },
+@@ -45,8 +46,9 @@
+
+ export default async function NoticiaDetallePage({ params }: Props) {
+-  const post = await getPostBySlug(params.slug);
++  const resolvedParams = await params;
++  const post = await getPostBySlug(resolvedParams.slug);
+
+   if (!post) {
+     notFound();

@@ -2,8 +2,9 @@ import { getPostById } from '@/lib/actions/posts.actions'
 import { PostForm } from '@/components/admin/PostForm'
 import { notFound } from 'next/navigation'
 
-export default async function EditarNoticiaPage({ params }: { params: { id: string } }) {
-  const post = await getPostById(params.id)
+export default async function EditarNoticiaPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const post = await getPostById(resolvedParams.id)
 
   if (!post) {
     notFound()

@@ -1,0 +1,22 @@
+<<<<<<< SEARCH
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
+=======
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = await getPostBySlug(resolvedParams.slug);
+>>>>>>> REPLACE
