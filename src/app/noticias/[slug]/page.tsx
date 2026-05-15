@@ -33,7 +33,7 @@ export async function generateMetadata(
     openGraph: {
       title: post.title,
       description: post.content.substring(0, 160),
-      url: `/noticias/${post.slug}`,
+      url: `/noticias/${resolvedParams.slug}`,
       images: [post.imageUrl, ...previousImages],
     },
     twitter: {
