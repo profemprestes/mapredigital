@@ -5,7 +5,7 @@ import { PageHero } from '@/components/shared/PageHero';
 import { getPublishedPosts } from '@/lib/actions/posts.actions';
 import { PostList } from '@/components/noticias/PostList';
 
-const ParticlesBackground = nextDynamic(() => 
+const ParticlesBackground = nextDynamic(() =>
   import('@/components/page/particles-background').then(mod => mod.ParticlesBackground)
 );
 
@@ -22,13 +22,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function NoticiasPage() {
-  let posts: any[] = [];
-  try {
-    const rawPosts = await getPublishedPosts();
-    posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
-  } catch (error) {
-    console.error('Failed to fetch posts:', error);
-  }
+  const rawPosts = await getPublishedPosts();
+  const posts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
 
   return (
     <>

@@ -1,0 +1,17 @@
+--- src/components/page/news-section.tsx
++++ src/components/page/news-section.tsx
+@@ -6,8 +6,13 @@
+
+ export async function NewsSection() {
+-  const rawPosts = await getLatestPosts(3);
+-  const latestPosts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  let latestPosts: any[] = [];
++  try {
++    const rawPosts = await getLatestPosts(3);
++    latestPosts = rawPosts.map(p => ({ ...p, _count: (p as any)._count || { comments: 0 } }));
++  } catch (error) {
++    console.error('Failed to fetch latest posts:', error);
++  }
+
+   if (latestPosts.length === 0) {
+     return null; // Don't render the section if there are no posts

@@ -9,14 +9,15 @@ import { Calendar, Clock } from 'lucide-react';
 import { CommentSection } from '@/components/noticias/CommentSection';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const resolvedParams = await params;
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     return {
@@ -32,7 +33,7 @@ export async function generateMetadata(
     openGraph: {
       title: post.title,
       description: post.content.substring(0, 160),
-      url: `/noticias/${post.slug}`,
+      url: `/noticias/${resolvedParams.slug}`,
       images: [post.imageUrl, ...previousImages],
     },
     twitter: {
@@ -45,7 +46,8 @@ export async function generateMetadata(
 }
 
 export default async function NoticiaDetallePage({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const resolvedParams = await params;
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     notFound();

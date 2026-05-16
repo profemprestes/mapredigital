@@ -1,0 +1,40 @@
+<<<<<<< SEARCH
+      url: `/noticias/${post.slug}`,
+      images: [post.imageUrl, ...previousImages],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.content.substring(0, 160),
+        images: [post.imageUrl],
+    }
+  };
+}
+
+export default async function NoticiaDetallePage({ params }: Props) {
+  const post = await getPostBySlug(params.slug);
+
+  if (!post) {
+    notFound();
+  }
+=======
+      url: `/noticias/${post.slug}`,
+      images: [post.imageUrl, ...previousImages],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.content.substring(0, 160),
+        images: [post.imageUrl],
+    }
+  };
+}
+
+export default async function NoticiaDetallePage({ params }: Props) {
+  const resolvedParams = await params;
+  const post = await getPostBySlug(resolvedParams.slug);
+
+  if (!post) {
+    notFound();
+  }
+>>>>>>> REPLACE
